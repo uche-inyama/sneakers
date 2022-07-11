@@ -1,0 +1,35 @@
+:root {
+  /* color */
+  --clr-Orange: 26, 100%, 55%;
+  --clr-Pale-Orange: 25, 100%, 94%;
+
+  --clr-very-vark-blue: 220, 13%, 13%;
+  --clr-Dark-grayish-blue: 219, 9%, 45;
+  --clr-Grayish-blue: 220, 14%, 75%;
+  --clr-Light-grayish-blue: 223, 64%, 98%;
+  --clr-White: 0, 0%, 100%;
+  /* with 75% opacity for lightbox background */
+  --clr-black: 0, 0%, 0%; 
+
+  /* font-sizes */
+  --fs-16: 1rem;
+
+  /* font-family */
+  --ff-Kumbh-Sans:  "Kumbh Sans";
+
+  /* font-weight */
+  --fw-400: 400; 
+  --fw-700: 700;
+}
+
+@media(min-width: 35rem){
+  :root {
+  }
+}
+
+@media(min-width: 45em){
+  :root {
+  }
+}
+
+
