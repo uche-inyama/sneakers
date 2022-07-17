@@ -6,19 +6,27 @@ import Store from './pages/Store'
 import About from './pages/About'
 import ShoppingItemDetail from './components/ShoppingItemDetail'
 import Navbar from './components/Navbar'
+import Admin from './components/admin'
+import ProductForm from './components/admin/ProductForm'
 import { ShoppingCartProvider } from './context/ShoppingCartContext'
+import ProductListState from './context/ProductListState'
 
 function App() {
   return ( 
-    <ShoppingCartProvider>
-      <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/:name/detail" element={<ShoppingItemDetail />} />
-          <Route path="/store" element={<Store />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-    </ShoppingCartProvider>
+    <ProductListState>
+      <ShoppingCartProvider>
+        <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/:id/detail" element={<ShoppingItemDetail />} />
+            <Route path="/store" element={<Store />} />
+            <Route path="/about" element={<About />} />
+            <Route path='/admin' element={<Admin />} />
+            <Route path='admin/product/new' element={<ProductForm />} />
+          </Routes>
+      </ShoppingCartProvider>
+    </ProductListState>
+
 )};
 
 export default App;

@@ -32,7 +32,7 @@ const Navbar = () => {
       <div className="cart_profile">
         <Modal />
         {cartQuantity === 0 ? '' : (
-          <div className="cart-total">{cartQuantity}</div>
+          <div className="bg-Orange cart-total">{cartQuantity}</div>
         )}
         <img className="avatar" src={avatar}/>
       </div>

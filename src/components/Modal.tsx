@@ -17,7 +17,6 @@ const Modal = () => {
               overlay: {
                 position: 'absolute',
                 display:  'grid',
-                // justifyContent: 'end',
                 width: '95%',
                 margin: '0 auto',
                 height: '260px',
@@ -28,7 +27,6 @@ const Modal = () => {
                 width: '100%',
                 height: 'clamp(16rem, 60vw, 20rem)',
                 justifySelf: 'start',
-                // height: '261px',
                 borderRadius:'5px',
                 position: 'absolute',
                 left: '0',
@@ -47,9 +45,9 @@ const Modal = () => {
               <span className="fw-400 fs-2 evaluation">$125.00 x 3</span>
               <span className="fw-400 fs-2 total">$375.00</span>
             </div>
-            <div className="trash"><img src={trash} alt="trash"/></div>
+            <div className="pointer trash"><img src={trash} alt="trash"/></div>
           </div>
-          <button className="capitalize fw-700 checkout-button bg-Orange text-white">checkout</button>
+          <button className="pointer capitalize fw-700 checkout-button bg-Orange text-white">checkout</button>
         </div>
       </ReactModal>
     </div>

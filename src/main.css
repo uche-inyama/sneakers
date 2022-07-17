@@ -87,7 +87,6 @@
   width: 20px;
   height: 20px;
   color: white;
-  background-color: red;
   font-size: 0.8rem;
   font-weight: 900;
   display: grid;
@@ -123,11 +122,16 @@
 
 .modal-wrapper {
   align-self: center;
+  cursor: pointer;
 }
 
 .modal-image {
   width: 100%;
   border-radius: 5px;
+}
+
+.sample-image {
+  cursor: pointer;
 }
 
 @media(min-width: 45rem) {
