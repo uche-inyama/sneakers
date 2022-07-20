@@ -8,7 +8,6 @@ import { ProductListContext } from '../context/ProductListState'
 const Store = () => {
   const Context = useContext(ProductListContext);
   const { getProducts, loading, products } = Context;
-  console.log(products)
 
   useEffect(() => {
     getProducts()
@@ -18,11 +17,11 @@ const Store = () => {
 
   return (
     <>
-      <Row md={2} xs={1} lg={3} className="g-3">
+      <div className="ff-Kumbh main-container">
         {products.map(item =>
-           <Col key={item.id}><StoreItem { ...item } /></Col>
+           <div key={item.id}><StoreItem { ...item } /></div>
         )}
-      </Row>
+      </div>
     </>
   )
 }

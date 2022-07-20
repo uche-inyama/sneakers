@@ -17,9 +17,8 @@ function App() {
       <ShoppingCartProvider>
         <Navbar />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/:id/detail" element={<ShoppingItemDetail />} />
-            <Route path="/store" element={<Store />} />
+            <Route path="/product/:id/detail" element={<ShoppingItemDetail />} />
+            <Route path="/" element={<Store />} />
             <Route path="/about" element={<About />} />
             <Route path='/admin' element={<Admin />} />
             <Route path='admin/product/new' element={<ProductForm />} />

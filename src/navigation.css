@@ -1,14 +1,19 @@
 header {
   height: 70px;
+  margin-bottom: 40px;
 }
 
 .mobile-nav-toggle {
   display: none;
 }
 
+.primary-navigation a {
+  text-decoration: none;
+}
+
 @media(max-width: 45rem){
   header {
-    padding: 10px 23px 0 23px;
+    padding: 10px 14px 0 10px;
     display: grid;
     grid-template-columns: 2fr 1fr;
     place-items: center;

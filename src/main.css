@@ -144,7 +144,7 @@
     grid-template-columns: minmax(1em, 1fr) repeat(2, minmax(0, 34rem)) minmax(1em, 1fr);
     grid-template-areas: 
     ". hero-image container ."
-    ". sample container .";
+    ". sample container ."
   }
 
   .hero-image {
@@ -189,7 +189,7 @@
 
   .sample {
     margin-top: 30px;
-    width: 80%;
+    width: 100%;
     list-style: none;
   }
   .sample img {

@@ -1,7 +1,7 @@
 import { useReducer, ReactNode, createContext } from 'react';
 import axios from 'axios';
 import ProductListReducer from './ProductListReducer'
-import { SET_LOADING, GET_PRODUCTS, CREATE_PRODUCTS, GET_PRODUCT } from './types';
+import { SET_LOADING, GET_PRODUCTS, GET_PRODUCT } from './types';
 
 type ProductListProviderProps = {
   children: ReactNode
@@ -18,11 +18,10 @@ type Product = {
 
 type ProductListContext = {
   products: Product[]
-  product: any
+  product: Product
   loading: boolean
   getProducts: () => void
   getProduct: (id: number) => void
-  createProduct: (data: Product) => Product
 }
 
 export const ProductListContext = createContext({} as ProductListContext)
@@ -52,15 +51,6 @@ const ProductListState = ({children}: ProductListProviderProps) => {
       type: GET_PRODUCT,
       payload: res.data
     })
-  }
-
-  const createProduct = (data: any) => {
-    fetch(`http://localhost:3000/products`, {
-      method: "POST",
-      body: data
-    })
-    .then(response => (response.json()))
-    .then(data => console.log(data))
   }
 
   const setLoading = () => dispatch({

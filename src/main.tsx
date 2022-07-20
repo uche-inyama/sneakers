@@ -8,6 +8,7 @@ import './custom.css'
 import './utility.css'
 import './navigation.css'
 import './main.css'
+import './style/storeItem.css'
 // import './toggle.js'
 
 

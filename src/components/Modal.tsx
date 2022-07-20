@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ReactModal from 'react-modal';
+import { useShoppingCart } from "../context/ShoppingCartContext"
 import product1 from '../images/image-product-1.jpg'
 import trash from '../images/icon-delete.svg'
 import cart from '../images/icon-cart.svg'
@@ -8,6 +9,8 @@ import cart from '../images/icon-cart.svg'
 ReactModal.setAppElement('#root')
 const Modal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const {  items } = useShoppingCart()
+
   return (
     <div className="modal-wrapper">
       <img onClick={() => setModalIsOpen(true)} className="cart" src={cart} />

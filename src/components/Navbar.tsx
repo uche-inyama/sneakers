@@ -22,7 +22,7 @@ const Navbar = () => {
       </div>
       <nav className="fs-2 text-Grayish-blue">
         <ul data-visible="false" className="primary-navigation">
-          <Link to='/store'>Collections</Link>
+          <Link to='/'>Collections</Link>
           <li>Men</li>
           <li>Women</li>
           <li>About</li>

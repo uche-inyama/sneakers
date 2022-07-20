@@ -1,8 +1,6 @@
-import { useEffect, useContext } from 'react'
-import { Card } from 'react-bootstrap'
+import React from 'react'
 import { formatCurrency } from '../utilities/formatCurrency'
 import { Link } from 'react-router-dom'
-import { ProductListContext } from '../context/ProductListState'
 
 type StoreItemProps = {
   id: number,
@@ -13,26 +11,16 @@ type StoreItemProps = {
   samples: any
 }
 
-const StoreItem = ({ id, name, marketing_statement, product_price, samples, product_discount }: StoreItemProps) => {
-
+const StoreItem = ({ id, name, product_price, samples }: StoreItemProps) => {
   return (
-    <Card>
-      <Card.Img
-        variant="top"
-        height="200px"
-        src={samples[0]['image_url']}
-        style={{objectFit: 'cover'}}
-      />
-      <Card.Body className="d-flex flex-column">
-        <Card.Title className="d-flex justify-content-between
-        align-items-baseline mb-4">
-          <span className="fs-4">{name}</span>
-          <span className="fs-4 text-muted">{formatCurrency(product_price)}</span>
-        </Card.Title>
-      </Card.Body>
-      <Link to={`/${id}/detail`} className="w-100">Buy</Link>
-    </Card>
+    <div className="storeItem">
+      <img src={samples[0]['image_url']} alt="product-item"/>
+      <div className="purchase_details">
+        <span className="product-name fs-4">{name}</span>
+        <span className="product-price fs-4 text-muted">{formatCurrency(product_price)}</span>
+      </div>
+      <Link to={`/product/${id}/detail`} className="buy w-100">Buy</Link>
+    </div>
   )
 }
-
 export default StoreItem;
