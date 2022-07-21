@@ -43,11 +43,11 @@ const Modal = () => {
           isOpen={modalIsOpen}>
         <div className="ff-Kumbh">
           <div className="modal-cart">Cart</div>
-            {
-              items.map(item => {
-                const selling_price = () => {
-                  return discount_value(item.product_price, item.product_discount)
-                }
+            { items.length === 0 ? <div>Your cart is empty</div> :
+            items.map(item => {
+              const selling_price = () => {
+                return discount_value(item.product_price, item.product_discount)
+              }
                 const total = selling_price()*item.quantity
                 return <div className="d-grid modal-detail">
                   <div style={{width: '90%'}}>
@@ -62,7 +62,10 @@ const Modal = () => {
                 </div>
               })
             }
-          <button className="pointer capitalize fw-700 checkout-button bg-Orange text-white">checkout</button>
+            
+          {items.length > 0 && 
+            <button className="pointer capitalize fw-700 checkout-button bg-Orange text-white">checkout</button>
+          }
         </div>
       </ReactModal>
     </div>
