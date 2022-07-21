@@ -11,9 +11,12 @@ type ShoppingCartProviderProps = {
 
 type CartItem = {
   id: number
-  image: string
   quantity: number
   amount: number
+  marketing_statement: string, 
+  product_price: number, 
+  product_discount: number, 
+  image: string
 }
 
 type ShoppingCartContext = {
@@ -23,7 +26,7 @@ type ShoppingCartContext = {
   increaseCartQuantity: (id: number) => void
   decreaseCartQuantity: (id: number) => void
   removeFromCart: (id: number) => void
-  addToCart: (id: number, image: string) => void
+  addToCart: (...args: any) => void
   setLoading: () => void
   cartQuantity: number
   cartItems: CartItem[]
@@ -106,17 +109,22 @@ export const ShoppingCartProvider = ({children}:
     payload: undefined
   })
 
-  const addToCart = async (id: number, image: string) => {
+  const addToCart = async (...args: any) => {
+    console.log(args)
     setLoading()
     try {
       const res =  await axios({
         method: 'POST',
-        url: `http://localhost:3000/cart/${id}/add`,
+        url: `http://localhost:3000/cart/${args[0]}/add`,
         data: { 
-          quantity: getItemQuantity(id),
-          image: image 
+          quantity: getItemQuantity(args[0]),
+          image: args[1],
+          marketing_statement: args[2],
+          product_price: args[3],
+          product_discount: args[4]
         }
       })
+      console.log(res.data)
       dispatch({
         type: ADD_TO_CART,
         payload: res.data

@@ -4,12 +4,12 @@ import { useShoppingCart } from '../context/ShoppingCartContext'
 import cartImage from "../images/icon-cart.svg"
 
 const DetailCard = ({id, product}: any) => {
-  console.log(id)
-  const {items, increaseCartQuantity, getItemQuantity, decreaseCartQuantity, removeFromCart, addToCart } = useShoppingCart()
+  const {items, increaseCartQuantity, getItemQuantity, decreaseCartQuantity, addToCart } = useShoppingCart()
   const { marketing_statement, product_price, product_discount, samples } = product
   const [image, setImage] = useState(samples[0]['image_url'])
-    
+  const sample_image = samples[0]['image_url']
   console.log(getItemQuantity(id))
+  
   const selling_price = () => {
     return discount_value(product_price, product_discount)
   }
@@ -22,7 +22,6 @@ const DetailCard = ({id, product}: any) => {
     const sample = samples.find((sample: { id: any }) => sample.id === id)
     return sample.image_url
   }
-
 
   return (
     <div>
@@ -60,7 +59,9 @@ const DetailCard = ({id, product}: any) => {
             </div>
             <div className="bottom-cart text-center bg-Orange">
               <img className="text-white fw-700 bottom-cart-image" style={{display: "inline-block"}} src={cartImage} alt="" />
-              <span onClick={() => addToCart(id, samples[0]['image_url'])} className="text-white fw-700 fs-3">Add to cart</span>
+              <span onClick={() => 
+                addToCart(id, sample_image, marketing_statement, product_price, product_discount)} 
+                className="text-white fw-700 fs-3">Add to cart</span>
             </div>
             </div>
         </article> 
