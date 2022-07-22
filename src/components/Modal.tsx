@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import ReactModal from 'react-modal';
 import { useShoppingCart } from "../context/ShoppingCartContext"
 import { formatCurrency, discount_value } from '../utilities/formatCurrency'
-
-import product1 from '../images/image-product-1.jpg'
 import trash from '../images/icon-delete.svg'
 import cart from '../images/icon-cart.svg'
 
@@ -11,7 +9,7 @@ import cart from '../images/icon-cart.svg'
 ReactModal.setAppElement('#root')
 const Modal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const {  items } = useShoppingCart()
+  const {  items, removeFromCart } = useShoppingCart()
   console.log(items)
     
  
@@ -41,9 +39,9 @@ const Modal = () => {
               }
             }}
           isOpen={modalIsOpen}>
-        <div className="ff-Kumbh">
+        <div className="ff-Kumbh modal-container">
           <div className="modal-cart">Cart</div>
-            { items.length === 0 ? <div>Your cart is empty</div> :
+            { items.length === 0 ? <div className="empty-modal">Your cart is empty</div> :
             items.map(item => {
               const selling_price = () => {
                 return discount_value(item.product_price, item.product_discount)
@@ -58,7 +56,7 @@ const Modal = () => {
                     <span className="fw-400 fs-2 evaluation">{formatCurrency(selling_price())} x {item.quantity}</span>
                     <span className="fw-400 fs-2 total">{formatCurrency(total)}</span>
                   </div>
-                  <div className="pointer trash"><img src={trash} alt="trash"/></div>
+                  <div className="pointer trash"><img onClick={() => removeFromCart(item.id)} src={trash} alt="trash"/></div>
                 </div>
               })
             }

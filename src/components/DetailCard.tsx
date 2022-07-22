@@ -9,7 +9,7 @@ const DetailCard = ({id, product}: any) => {
   const [image, setImage] = useState(samples[0]['image_url'])
   const sample_image = samples[0]['image_url']
   console.log(getItemQuantity(id))
-  
+
   const selling_price = () => {
     return discount_value(product_price, product_discount)
   }
@@ -39,7 +39,7 @@ const DetailCard = ({id, product}: any) => {
       </div>
       <div className="container">
         <h4 className="uppercase text-Orange fs-1 fw-700">Sneaker Company</h4>
-        <h1 className="fs-4 fw-700">Fall Limited Edition Sneakers</h1>
+        <h1 className="fs-4 fw-700 hight-light">Fall Limited Edition Sneakers</h1>
         <article>
           <p className="description fw-400 fs-2 text-light">
             {marketing_statement}
@@ -61,7 +61,7 @@ const DetailCard = ({id, product}: any) => {
               <img className="text-white fw-700 bottom-cart-image" style={{display: "inline-block"}} src={cartImage} alt="" />
               <span onClick={() => 
                 addToCart(id, sample_image, marketing_statement, product_price, product_discount)} 
-                className="text-white fw-700 fs-3">Add to cart</span>
+                className="add-to-cart text-white fw-700 fs-3">Add to cart</span>
             </div>
             </div>
         </article> 

@@ -1,16 +1,18 @@
-import React from 'react'
-import { Container, Nav, Navbar as NavbarBs, Button } from 'react-bootstrap';
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { useShoppingCart } from '../context/ShoppingCartContext'
-import cart from '../images/icon-cart.svg'
 import avatar from '../images/image-avatar.png'
 import { toggle } from '../toggle'
 import Modal from './Modal'
 
 const Navbar = () => {
-  const { openCart, cartQuantity } = useShoppingCart()
+  const { cartQuantity } = useShoppingCart()
 
   const handleToggle = () => toggle();
+  console.log(cartQuantity)
+  useEffect(() => {
+    cartQuantity
+  }, [cartQuantity])
 
   return (
     <header>

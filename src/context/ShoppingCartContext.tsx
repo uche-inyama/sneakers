@@ -1,8 +1,7 @@
 import { useState, useReducer, createContext, ReactNode, useContext } from 'react'
-import ShoppingCart from '../components/shoppingCart'
 import ShoppingCartReducer from './ShoppingCartReducer'
 import axios from 'axios'
-import { ADD_TO_CART, SET_LOADING } from './types'
+import { ADD_TO_CART, SET_LOADING, REMOVE_FROM_CART } from './types'
 
 
 type ShoppingCartProviderProps = {
@@ -62,6 +61,10 @@ export const ShoppingCartProvider = ({children}:
     return cartItems.find(item => item.id === id)?.quantity || 0
   }
 
+  const cartQuantity = state.Items.reduce(
+    (quantity: number, item: { quantity: number }) => item.quantity + quantity, 0
+  )
+
   function increaseCartQuantity(id: number) {
     setCartItems(currItems => {
       if(currItems.find(item => item.id === id) == null) {
@@ -95,14 +98,17 @@ export const ShoppingCartProvider = ({children}:
   }
 
   function removeFromCart(id: number) {
-    setCartItems(currItems => {
-      return currItems.filter(item => item.id !== id)
-    })
+    console.log(id)
+    try {
+      axios.delete(`http://localhost:3000/cart/${id}/remove`)
+      dispatch({
+        type: REMOVE_FROM_CART,
+        payload: id
+      })
+    } catch (error) {
+      console.error(id)
+    }
   }
-
-  const cartQuantity = cartItems.reduce(
-    (quantity, item) => item.quantity + quantity, 0
-  )
 
   const setLoading = () => dispatch({
     type: SET_LOADING,
@@ -110,7 +116,6 @@ export const ShoppingCartProvider = ({children}:
   })
 
   const addToCart = async (...args: any) => {
-    console.log(args)
     setLoading()
     try {
       const res =  await axios({
@@ -124,7 +129,6 @@ export const ShoppingCartProvider = ({children}:
           product_discount: args[4]
         }
       })
-      console.log(res.data)
       dispatch({
         type: ADD_TO_CART,
         payload: res.data
@@ -152,7 +156,6 @@ export const ShoppingCartProvider = ({children}:
     }}
     >
       {children}
-      <ShoppingCart isOpen={isOpen}/>
     </ShoppingCartContext.Provider>
   )
 }
