@@ -4,15 +4,19 @@ import { useShoppingCart } from "../context/ShoppingCartContext"
 import { formatCurrency, discount_value } from '../utilities/formatCurrency'
 import trash from '../images/icon-delete.svg'
 import cart from '../images/icon-cart.svg'
+import { pubsub } from '../utilities/pubsub'
 
 
 ReactModal.setAppElement('#root')
 const Modal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const {  items, removeFromCart } = useShoppingCart()
-  console.log(items)
+  const {  items, removeFromCart, reset } = useShoppingCart()
     
- 
+  const handleDelete = (item: any) => {
+    removeFromCart(item.id)
+    pubsub.publish('resetCount', item.id)
+  }
+
   return (
     <div className="modal-wrapper">
       <img onClick={() => setModalIsOpen(true)} className="cart" src={cart} />
@@ -56,12 +60,11 @@ const Modal = () => {
                     <span className="fw-400 fs-2 evaluation">{formatCurrency(selling_price())} x {item.quantity}</span>
                     <span className="fw-400 fs-2 total">{formatCurrency(total)}</span>
                   </div>
-                  <div className="pointer trash"><img onClick={() => removeFromCart(item.id)} src={trash} alt="trash"/></div>
+                  <div className="pointer trash"><img onClick={() => handleDelete(item)} src={trash} alt="trash"/></div>
                 </div>
               })
             }
-            
-          {items.length > 0 && 
+          { items.length > 0 && 
             <button className="pointer capitalize fw-700 checkout-button bg-Orange text-white">checkout</button>
           }
         </div>
