@@ -15,7 +15,6 @@ const ShoppingItemDetail = () => {
   }, [id_param])
   
   if(loading || product === null) return <div>loading...</div>
-console.log(product)
 
   return (
     <DetailCard product={product} id={id_param}/>

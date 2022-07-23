@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { formatCurrency, discount_value } from '../utilities/formatCurrency'
 import { useShoppingCart } from '../context/ShoppingCartContext'
 import cartImage from "../images/icon-cart.svg"
@@ -6,7 +6,7 @@ import { pubsub } from '../utilities/pubsub'
 
 
 const DetailCard = ({id, product}: any) => {
-  const { item, cartQuantity, addToCart } = useShoppingCart()
+  const { addToCart } = useShoppingCart()
   const { marketing_statement, product_price, product_discount, samples } = product
   const [image, setImage] = useState(samples[0]['image_url'])
   const sample_image = samples[0]['image_url']
@@ -19,11 +19,14 @@ const DetailCard = ({id, product}: any) => {
   pubsub.subscribe('resetCount', reset)
 
   const handleCountIncrease = () => {
-    setCount(prev => { return prev += 1;})
+    setCount(prev => { return prev += 1; })
   }
 
   const handleCountDecrease = () => { 
-    setCount(prev => { return prev -= 1; })
+    setCount(prev => { 
+      const newValue =  prev -= 1; 
+      return newValue < 0 ? 0 : newValue
+    })
   }
 
   const selling_price = () => discount_value(product_price, product_discount)
@@ -33,6 +36,13 @@ const DetailCard = ({id, product}: any) => {
   const get_image_url = (id: any) => {
     const sample = samples.find((sample: { id: any }) => sample.id === id)
     return sample.image_url
+  }
+
+  const handleAddToClick = () => {
+    if(count === 0) return
+    if(count > 0){
+      addToCart(id, count, sample_image, marketing_statement, product_price, product_discount)
+    }
   }
 
   return (
@@ -70,8 +80,7 @@ const DetailCard = ({id, product}: any) => {
               </div>
               <div className="bottom-cart text-center bg-Orange">
                 <img className="text-white fw-700 bottom-cart-image" style={{display: "inline-block"}} src={cartImage} alt="" />
-                <span onClick={() =>
-                  addToCart(id, count, sample_image, marketing_statement, product_price, product_discount)} 
+                <span onClick={() => handleAddToClick()} 
                   className="add-to-cart text-white fw-700 fs-3">Add to cart</span>
               </div>
             </div>
