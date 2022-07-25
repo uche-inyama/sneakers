@@ -19,7 +19,7 @@ const Registration = () => {
     }}
   >
   {({ errors, touched }) => (
-    <Form>
+    <form>
       <div className="field">
         <Field name="username" placeholder="username"/>
         {errors.username && touched.username ? ( <div>{errors.username}</div>) : null}
@@ -37,7 +37,7 @@ const Registration = () => {
         {errors.password_confirmation && touched.password_confirmation ? <div>{errors.password_confirmation}</div> : null}
       </div>
       <button type="submit">Submit</button>
-    </Form>
+    </form>
   )}
 </Formik>
     </div>

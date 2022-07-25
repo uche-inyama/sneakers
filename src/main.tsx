@@ -2,14 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
-// import 'bootstrap/dist/css/bootstrap.min.css'
 import './reset.css'
 import './custom.css'
 import './utility.css'
 import './navigation.css'
 import './main.css'
 import './style/storeItem.css'
-// import './toggle.js'
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
