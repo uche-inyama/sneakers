@@ -22,9 +22,7 @@ type ShoppingCartContext = {
   removeFromCart: (id: number) => void
   addToCart: (...args: any) => void
   setLoading: () => void
-  reset: () => void
   cartQuantity: number
-  cartItems: CartItem[]
   items: CartItem[]
   item: CartItem
   loading: boolean
@@ -97,6 +95,7 @@ export const ShoppingCartProvider = ({children}:
       removeFromCart,
       cartQuantity,
       addToCart,
+      setLoading,
       loading: state.loading,
       items: state.Items,
       item: state.Item

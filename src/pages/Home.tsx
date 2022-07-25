@@ -1,8 +1,10 @@
 import React from 'react'
-
+import SignUp from './Registration'
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+      <SignUp />
+    </div>
   )
 }
 

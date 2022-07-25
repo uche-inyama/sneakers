@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useFileFormContext, FileFormContext } from '../../context/FileFormContext'
+import { useFileFormContext, FileFormContext } from '../../context/RegistrationContext'
 import { ProductListContext } from '../../context/ProductListState'
 
 const ProductForm = () => {

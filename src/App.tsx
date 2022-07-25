@@ -9,20 +9,24 @@ import Navbar from './components/Navbar'
 import Admin from './components/admin'
 import ProductForm from './components/admin/ProductForm'
 import { ShoppingCartProvider } from './context/ShoppingCartContext'
+import { RegistrationFormProvider } from './context/RegistrationContext'
 import ProductListState from './context/ProductListState'
 
 function App() {
   return ( 
     <ProductListState>
       <ShoppingCartProvider>
-        <Navbar />
-          <Routes>
-            <Route path="/product/:id/detail" element={<ShoppingItemDetail />} />
-            <Route path="/" element={<Store />} />
-            <Route path="/about" element={<About />} />
-            <Route path='/admin' element={<Admin />} />
-            <Route path='admin/product/new' element={<ProductForm />} />
-          </Routes>
+        <RegistrationFormProvider>
+          <Navbar />
+            <Routes>
+              <Route path="/product/:id/detail" element={<ShoppingItemDetail />} />
+              <Route path="/home" element={<Home />}/>
+              <Route path="/" element={<Store />} />
+              <Route path="/about" element={<About />} />
+              <Route path='/admin' element={<Admin />} />
+              <Route path='admin/product/new' element={<ProductForm />} />
+            </Routes>
+          </RegistrationFormProvider>
       </ShoppingCartProvider>
     </ProductListState>
 
