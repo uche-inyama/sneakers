@@ -152,6 +152,12 @@
   font-size: 0.8rem;
 }
 
+#ReactModal__content__logout{
+  width: clamp(3rem, 50vw, 8rem) !important;
+  height: clamp(6rem, 50vw, 5rem)!important;
+  text-align: center;
+}
+
 @media(min-width: 45rem) {
 
   main {

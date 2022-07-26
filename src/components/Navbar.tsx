@@ -4,6 +4,8 @@ import { useShoppingCart } from '../context/ShoppingCartContext'
 import avatar from '../images/image-avatar.png'
 import { toggle } from '../toggle'
 import Modal from './Modal'
+import ProfileModal from './ProfileModal'
+
 
 const Navbar = () => {
   const { cartQuantity } = useShoppingCart()
@@ -36,7 +38,7 @@ const Navbar = () => {
         {cartQuantity === 0 ? '' : (
           <div className="bg-Orange cart-total">{cartQuantity}</div>
         )}
-        <img className="avatar" src={avatar}/>
+        <ProfileModal />
       </div>
   </header>
   )

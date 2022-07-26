@@ -10,7 +10,7 @@ import { pubsub } from '../utilities/pubsub'
 ReactModal.setAppElement('#root')
 const Modal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const {  items, removeFromCart, reset } = useShoppingCart()
+  const {  items, removeFromCart } = useShoppingCart()
     
   const handleDelete = (item: any) => {
     removeFromCart(item.id)
@@ -28,7 +28,6 @@ const Modal = () => {
                 display:  'grid',
                 width: '95%',
                 margin: '0 auto',
-                height: '260px',
                 backgroundColor: 'transparent',
                 inset: '62px 0 0 0',
               },
