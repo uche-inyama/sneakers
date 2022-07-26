@@ -1,11 +1,12 @@
 import { useFormik } from 'formik'
-import * as Yup from 'yup'
+import { useNavigate } from 'react-router-dom'
 import { SessionSchema } from '../validations/RegistrationValidation'
 import { useSessionsContext } from '../context/SessionContext'
 
 
 const Login = () => {
   const { createSession } = useSessionsContext()
+  let navigate = useNavigate();
   const { handleSubmit, handleChange, errors, touched} = useFormik({
     initialValues: {
       email: '',
@@ -14,6 +15,7 @@ const Login = () => {
     validationSchema: SessionSchema,
     onSubmit: values => {
       createSession(values)
+      navigate('/')
     },
   })
   return (
@@ -23,7 +25,7 @@ const Login = () => {
         {errors.email && touched.email ? <div>{errors.email}</div> : null}
       </div>
       <div className="field">
-        <input name="password" onChange={handleChange} type="text" placeholder="password"/>
+        <input name="password" onChange={handleChange} type="password" placeholder="password"/>
         {errors.password && touched.password ? <div>{errors.password}</div> : null}
       </div>
       <button type="submit">Submit</button>

@@ -37,6 +37,7 @@ export const RegistrationFormProvider = ({children}: RegistrationFormProviderPro
         url: 'http://localhost:3000/users',
         data: userData
       })
+      console.log(res.data)
       dispatch({
         type: CREATE_USER,
         payload:{

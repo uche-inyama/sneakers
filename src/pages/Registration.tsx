@@ -1,4 +1,5 @@
 import { useFormik } from 'formik'
+import { useNavigate } from 'react-router-dom'
 import { RegistrationSchema } from '../validations/RegistrationValidation'
 import { useRegistrationFormContext } from '../context/RegistrationContext'
 import { Link } from 'react-router-dom'
@@ -6,6 +7,7 @@ import { Link } from 'react-router-dom'
 
 const Registration = () => {
   const { createUser } = useRegistrationFormContext()
+  let navigate = useNavigate()
   const { handleSubmit, handleChange, errors, touched} = useFormik({
     initialValues: {
       email: '',
@@ -16,6 +18,7 @@ const Registration = () => {
     validationSchema: RegistrationSchema,
     onSubmit: values => {
       createUser(values)
+      navigate('/home')
     },
   })
   return (
@@ -30,11 +33,11 @@ const Registration = () => {
           {errors.email && touched.email ? <div>{errors.email}</div> : null}
         </div>
         <div className="field">
-          <input name="password" onChange={handleChange} type="text" placeholder="password"/>
+          <input name="password" onChange={handleChange} type="password" placeholder="password"/>
           {errors.password && touched.password ? <div>{errors.password}</div> : null}
         </div>
         <div className="field">
-          <input name="password_confirmation" onChange={handleChange} type="text" placeholder="password confirmation"/>
+          <input name="password_confirmation" onChange={handleChange} type="password" placeholder="password confirmation"/>
           {errors.password_confirmation && touched.password_confirmation ? <div>{errors.password_confirmation}</div> : null}
         </div>
         <button type="submit">Submit</button>

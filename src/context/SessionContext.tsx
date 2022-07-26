@@ -34,7 +34,7 @@ export const SessionsProvider = ({children}: SessionsproviderProps) => {
    try {
       const res = await axios({
         method: 'POST',
-        url: 'http://localhost:3000//users/sign_in',
+        url: 'http://localhost:3000/users/sign_in',
         data: sessionData
       })
       console.log(res.data)
