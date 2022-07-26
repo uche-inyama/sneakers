@@ -1,48 +1,47 @@
-import { Formik, Form, Field } from 'formik'
-import { useRegistrationFormContext } from '../context/RegistrationContext'
+import { useFormik } from 'formik'
 import { RegistrationSchema } from '../validations/RegistrationValidation'
+import { useRegistrationFormContext } from '../context/RegistrationContext'
+import { Link } from 'react-router-dom'
+
 
 const Registration = () => {
   const { createUser } = useRegistrationFormContext()
-  return (
-    <div>
-    <Formik
-      initialValues={{
+  const { handleSubmit, handleChange, errors, touched} = useFormik({
+    initialValues: {
       email: '',
       username: '',
       password: '',
       password_confirmation: ''
-    }}
-    validationSchema={RegistrationSchema}
-    onSubmit ={values => {
+    },
+    validationSchema: RegistrationSchema,
+    onSubmit: values => {
       createUser(values)
-    }}
-  >
-  {({ errors, touched }) => (
-    <form>
-      <div className="field">
-        <Field name="username" placeholder="username"/>
-        {errors.username && touched.username ? ( <div>{errors.username}</div>) : null}
-      </div>
-      <div className="field">
-        <Field name="email" type="email" placeholder="email"/>
-        {errors.email && touched.email ? <div>{errors.email}</div> : null}
-      </div>
-      <div className="field">
-        <Field name="password" type="text" placeholder="password"/>
-        {errors.password && touched.password ? <div>{errors.password}</div> : null}
-      </div>
-      <div className="field">
-        <Field name="password_confirmation" type="text" placeholder="password_confirmation"/>
-        {errors.password_confirmation && touched.password_confirmation ? <div>{errors.password_confirmation}</div> : null}
-      </div>
-      <button type="submit">Submit</button>
-    </form>
-  )}
-</Formik>
+    },
+  })
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div className="field">
+          <input name="username" onChange={handleChange} type="text" placeholder="username"/>
+          {errors.email && touched.email ? <div>{errors.email}</div> : null}
+        </div>
+        <div className="field">
+          <input name="email" onChange={handleChange} type="email" placeholder="email"/>
+          {errors.email && touched.email ? <div>{errors.email}</div> : null}
+        </div>
+        <div className="field">
+          <input name="password" onChange={handleChange} type="text" placeholder="password"/>
+          {errors.password && touched.password ? <div>{errors.password}</div> : null}
+        </div>
+        <div className="field">
+          <input name="password_confirmation" onChange={handleChange} type="text" placeholder="password confirmation"/>
+          {errors.password_confirmation && touched.password_confirmation ? <div>{errors.password_confirmation}</div> : null}
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+      <Link to="/home">Login</Link>
     </div>
   )
 }
 
-
-export default Registration
+export default Registration;

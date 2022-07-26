@@ -37,9 +37,13 @@ export const SessionsProvider = ({children}: SessionsproviderProps) => {
         url: 'http://localhost:3000//users/sign_in',
         data: sessionData
       })
+      console.log(res.data)
       dispatch({
         type: CREATE_SESSION,
-        payload: res.data
+        payload: {
+          session: res.data,
+          notice: 'You have successfully signed in.'
+        } 
       })
     } catch (error) {
       console.error(error)

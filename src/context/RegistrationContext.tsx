@@ -39,7 +39,10 @@ export const RegistrationFormProvider = ({children}: RegistrationFormProviderPro
       })
       dispatch({
         type: CREATE_USER,
-        payload: res.data
+        payload:{
+          data: res.data,
+          notice: 'You have successfully created an account.'
+        } 
       })
     } catch (error) {
       console.error(error)

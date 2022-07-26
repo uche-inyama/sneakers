@@ -13,7 +13,6 @@ const Login = () => {
     },
     validationSchema: SessionSchema,
     onSubmit: values => {
-      console.log(values)
       createSession(values)
     },
   })
