@@ -1,17 +1,20 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import ReactModal from 'react-modal';
 import { useShoppingCart } from "../context/ShoppingCartContext"
 import { formatCurrency, discount_value } from '../utilities/formatCurrency'
 import trash from '../images/icon-delete.svg'
 import cart from '../images/icon-cart.svg'
 import { pubsub } from '../utilities/pubsub'
+import { useSessionsContext } from '../context/SessionContext'
 
 
 ReactModal.setAppElement('#root')
 const Modal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const {  items, removeFromCart } = useShoppingCart()
-    
+  const { session } = useSessionsContext()
+  const id_session = localStorage.getItem('session_id');
+
   const handleDelete = (item: any) => {
     removeFromCart(item.id)
     pubsub.publish('resetCount', item.id)
@@ -19,7 +22,7 @@ const Modal = () => {
 
   return (
     <div className="modal-wrapper">
-      <img onClick={() => setModalIsOpen(true)} className="cart" src={cart} />
+      {id_session && <img onClick={() => setModalIsOpen(true)} className="cart" src={cart} />}
       <ReactModal 
           onRequestClose={() => setModalIsOpen(false)} 
           style={{

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { ReactNode, createContext, useContext, useReducer } from 'react';
-import RegistrationReducer from './RegistrationReducer';
-import { CREATE_SESSION } from './types';
+import SessionsReducer from './SessionsReducer';
+import { CREATE_SESSION, END_SESSION } from './types';
 
 
 type SessionsproviderProps = {
@@ -15,7 +15,8 @@ type session = {
 
 type SessionsContext = {
   createSession: (sessionData: session) => void
-  users: session
+  endSession: () => void
+  session: any
 }
 
 const SessionsContext = createContext({} as SessionsContext);
@@ -26,9 +27,9 @@ export const useSessionsContext = () => {
 
 export const SessionsProvider = ({children}: SessionsproviderProps) => {
   const initialState = {
-    session: []
+    session: null
   }
-  const [state, dispatch] = useReducer(RegistrationReducer, initialState)
+  const [state, dispatch] = useReducer(SessionsReducer, initialState)
 
   const createSession = async (sessionData: session) => {
    try {
@@ -37,11 +38,12 @@ export const SessionsProvider = ({children}: SessionsproviderProps) => {
         url: 'http://localhost:3000/users/sign_in',
         data: sessionData
       })
-      console.log(res.data)
+      // console.log(res.data)
+      localStorage.setItem('session_id', `${res.data.id}`);
       dispatch({
         type: CREATE_SESSION,
         payload: {
-          session: res.data,
+          id: res.data.id,
           notice: 'You have successfully signed in.'
         } 
       })
@@ -49,10 +51,30 @@ export const SessionsProvider = ({children}: SessionsproviderProps) => {
       console.error(error)
     }
   }
+
+  const endSession = async () => {
+    try {
+      const res = await axios({
+        method: 'DELETE',
+        url: 'http://localhost:3000/users/sign_out'
+      })
+
+      dispatch({
+        type: END_SESSION,
+        payload: {
+          session: 'delete'
+        }
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <SessionsContext.Provider value={{ 
        createSession,
-       users: state.users
+       endSession,
+       session: state.session
       }}>
       {children}
     </SessionsContext.Provider>

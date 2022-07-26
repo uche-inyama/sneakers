@@ -1,4 +1,4 @@
-import { CREATE_SESSION } from './types'
+import { CREATE_SESSION, END_SESSION } from './types'
 
 type action = {
   type: string
@@ -14,13 +14,22 @@ type state = {
   session: session
 }
 
-const ShoppingCartReducer = (state :state, action :action) => {
+const SessionsReducer = (state :state, action :action) => {
   switch(action.type){
     case CREATE_SESSION: 
-      return action.payload
+    console.log(action.payload)
+    return {
+      ...state,
+      session: action.payload
+    }
+    case END_SESSION:
+      return {
+        ...state,
+        session: action.payload
+      }
     default:
       return state
   }
 }
 
-export default ShoppingCartReducer;
+export default SessionsReducer;

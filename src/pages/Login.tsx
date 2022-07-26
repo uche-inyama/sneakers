@@ -6,6 +6,7 @@ import { useSessionsContext } from '../context/SessionContext'
 
 const Login = () => {
   const { createSession } = useSessionsContext()
+  // const { id } = session
   let navigate = useNavigate();
   const { handleSubmit, handleChange, errors, touched} = useFormik({
     initialValues: {

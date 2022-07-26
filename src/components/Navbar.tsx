@@ -1,17 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useShoppingCart } from '../context/ShoppingCartContext'
-import avatar from '../images/image-avatar.png'
 import { toggle } from '../toggle'
 import Modal from './Modal'
 import ProfileModal from './ProfileModal'
+import { useSessionsContext } from '../context/SessionContext'
 
 
 const Navbar = () => {
   const { cartQuantity } = useShoppingCart()
-
+  const { session } = useSessionsContext()
   const handleToggle = () => toggle();
-  console.log(cartQuantity)
+  const id_session = localStorage.getItem('session_id');
+
   useEffect(() => {
     cartQuantity
   }, [cartQuantity])
@@ -24,15 +25,17 @@ const Navbar = () => {
         </button>
         <div className="fw-700 fs-3">Sneakers</div>
       </div>
-      <nav className="fs-2 text-Grayish-blue">
-        <ul data-visible="false" className="primary-navigation">
-          <Link to='/'>Collections</Link>
-          <li>Men</li>
-          <li>Women</li>
-          <li>About</li>
-          <li>Contact</li>
-        </ul>
-      </nav>
+      {id_session ? (
+         <nav className="fs-2 text-Grayish-blue">
+         <ul data-visible="false" className="primary-navigation">
+           <Link to='/'>Collections</Link>
+           <li>Men</li>
+           <li>Women</li>
+           <li>About</li>
+           <li>Contact</li>
+         </ul>
+       </nav>
+      ) : (<div></div>)}
       <div className="cart_profile">
         <Modal />
         {cartQuantity === 0 ? '' : (
