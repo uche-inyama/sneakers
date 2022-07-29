@@ -1,6 +1,4 @@
 import { useEffect, useContext } from 'react'
-import { Col, Row } from 'react-bootstrap'
-import storeItems from '../data/items.json'
 import StoreItem from '../components/StoreItem'
 import { ProductListContext } from '../context/ProductListState'
 
@@ -19,7 +17,7 @@ const Store = () => {
     <>
       <div className="ff-Kumbh main-container">
         {products.map(item =>
-           <div key={item.id}><StoreItem { ...item } /></div>
+           <div key={item.id}><StoreItem samples={undefined} {...item} /></div>
         )}
       </div>
     </>

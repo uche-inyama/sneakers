@@ -8,13 +8,13 @@ export const pubsub = {
 
   unsubscribe: function(e, fn){
     if(this.events[e]){
-      this.events[e] = this.events[e].filter(f => f !== fn);
+      this.events[e] = this.events[e].filter((f) => f !== fn);
     }
   },
   
   publish: function(e, data){
     if(this.events[e]){
-      this.events[e].forEach(f => {
+      this.events[e].forEach((f) => {
         f(data);
       });
     }

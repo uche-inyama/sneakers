@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import ReactModal from 'react-modal';
+import ReactModal from 'react-modal'
 import { useShoppingCart } from "../context/ShoppingCartContext"
 import { formatCurrency, discount_value } from '../utilities/formatCurrency'
 import trash from '../images/icon-delete.svg'
@@ -53,7 +53,7 @@ const Modal = () => {
                 return discount_value(item.product_price, item.product_discount)
               }
                 const total = selling_price()*item.quantity
-                return <div className="d-grid modal-detail">
+                return <div key={item.id} className="d-grid modal-detail">
                   <div style={{width: '90%'}}>
                     <img className="modal-image" src={item.image} alt="product-1"/>
                   </div>

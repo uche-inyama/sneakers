@@ -163,6 +163,49 @@
   cursor: pointer;
 }
 
+.home,
+.registration-form {
+  top: 2rem;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.field {
+  margin-bottom: 10px;
+}
+
+.input-field {
+  height: 40px;
+  width: 300px;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.ReactModal__Content {
+  display: grid !important;
+  inset: unset !important;
+  width: clamp(22rem, 50vw, 30rem) !important;
+  height: clamp(18rem, 50vw, 15rem)!important;
+  border-radius: 5px !important;
+  position: absolute !important;
+  right: 0.65% !important;
+  top: 4% !important;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.empty-modal {
+  text-align: center;
+  position: relative;
+  top: 25%;
+  font-weight: 600;
+}
+
 @media(min-width: 45rem) {
 
   main {
@@ -200,7 +243,7 @@
   }
 
   .hight-light {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   .bottom-cart {
@@ -246,11 +289,15 @@
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   }
 
-
   .empty-modal {
     text-align: center;
     position: relative;
     top: 25%;
     font-weight: 600;
+  }
+
+  .field .sign-in {
+    height: 40px;
+    width: 300px;
   }
 }

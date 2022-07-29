@@ -28,11 +28,11 @@ const Navbar = () => {
       {id_session ? (
          <nav className="fs-2 text-Grayish-blue">
          <ul data-visible="false" className="primary-navigation">
-           <Link to='/'>Collections</Link>
-           <li>Men</li>
+           <Link to='/store'>Collections</Link>
+           {/* <li>Men</li>
            <li>Women</li>
            <li>About</li>
-           <li>Contact</li>
+           <li>Contact</li> */}
          </ul>
        </nav>
       ) : (<div></div>)}

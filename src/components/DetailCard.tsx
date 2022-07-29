@@ -13,7 +13,7 @@ const DetailCard = ({id, product}: any) => {
   let [count, setCount] = useState(0)
 
   const reset = () => {
-    setCount(0)
+    return setCount(0)
   }
 
   pubsub.subscribe('resetCount', reset)

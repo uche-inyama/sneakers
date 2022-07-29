@@ -17,7 +17,6 @@ type state = {
 const SessionsReducer = (state :state, action :action) => {
   switch(action.type){
     case CREATE_SESSION: 
-    console.log(action.payload)
     return {
       ...state,
       session: action.payload

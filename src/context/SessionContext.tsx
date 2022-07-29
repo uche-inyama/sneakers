@@ -38,7 +38,6 @@ export const SessionsProvider = ({children}: SessionsproviderProps) => {
         url: 'http://localhost:3000/users/sign_in',
         data: sessionData
       })
-      // console.log(res.data)
       localStorage.setItem('session_id', `${res.data.id}`);
       dispatch({
         type: CREATE_SESSION,

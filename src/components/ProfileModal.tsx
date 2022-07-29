@@ -16,12 +16,12 @@ const Modal = () => {
   const handleLogout = () => {
     endSession()
     localStorage.setItem('session_id', '')
-    navigate('/home')
+    navigate('/')
     window.location.reload();
   }
 
   const handleLogin = () => {
-    navigate('/home')
+    navigate('/')
   }
 
   return (
