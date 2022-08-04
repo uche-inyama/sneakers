@@ -34,7 +34,7 @@ export const RegistrationFormProvider = ({children}: RegistrationFormProviderPro
    try {
       const res = await axios({
         method: 'POST',
-        url: 'http://localhost:3000/users',
+        url: 'https://blooming-anchorage-66508.herokuapp.com/users',
         data: userData
       })
       console.log(res.data)

@@ -9,9 +9,9 @@ import { useSessionsContext } from '../context/SessionContext'
 
 const Navbar = () => {
   const { cartQuantity } = useShoppingCart()
-  const { session } = useSessionsContext()
+  const { isAuthenticated } = useSessionsContext()
   const handleToggle = () => toggle();
-  const id_session = localStorage.getItem('session_id');
+
 
   useEffect(() => {
     cartQuantity
@@ -25,7 +25,7 @@ const Navbar = () => {
         </button>
         <div className="fw-700 fs-3">Sneakers</div>
       </div>
-      {id_session ? (
+      {isAuthenticated ? (
          <nav className="fs-2 text-Grayish-blue">
          <ul data-visible="false" className="primary-navigation">
            <Link to='/store'>Collections</Link>

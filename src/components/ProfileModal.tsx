@@ -9,13 +9,11 @@ import { useSessionsContext } from '../context/SessionContext'
 ReactModal.setAppElement('#root')
 const Modal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const { endSession } = useSessionsContext()
+  const { endSession, isAuthenticated } = useSessionsContext()
   const navigate  = useNavigate()
-  const session_id = localStorage.getItem('session_id');
   
   const handleLogout = () => {
     endSession()
-    localStorage.setItem('session_id', '')
     navigate('/')
     window.location.reload();
   }
@@ -26,7 +24,7 @@ const Modal = () => {
 
   return (
     <div className="modal-wrapper">
-      {session_id && <img onClick={() => setModalIsOpen(true)} className="avatar" src={avatar} />}
+      {isAuthenticated && <img onClick={() => setModalIsOpen(true)} className="avatar" src={avatar} />}
       <ReactModal 
           onRequestClose={() => setModalIsOpen(false)} 
           onAfterOpen={() => addClassName()}
@@ -51,7 +49,7 @@ const Modal = () => {
             }}
           isOpen={modalIsOpen}>
         <div className="ff-Kumbh modal-container">
-          { session_id ? (<div className="logout" onClick={() => handleLogout()}>logout</div>):
+          { isAuthenticated ? (<div className="logout" onClick={() => handleLogout()}>logout</div>):
             (<div className="login" onClick={() => handleLogin()}>Sign in</div>)
           }
         </div>

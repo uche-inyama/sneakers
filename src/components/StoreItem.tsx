@@ -1,6 +1,9 @@
-import React from 'react'
+import { useEffect } from 'react'
 import { formatCurrency } from '../utilities/formatCurrency'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+
+import { useSessionsContext } from '../context/SessionContext'
 
 type StoreItemProps = {
   id: number,
@@ -12,6 +15,15 @@ type StoreItemProps = {
 }
 
 const StoreItem = ({ id, name, product_price, samples }: StoreItemProps) => {
+  const { isAuthenticated } = useSessionsContext()
+  const navigate = useNavigate()
+
+  // useEffect(() => {
+  //   if(!isAuthenticated){
+  //     navigate('/')
+  //   }
+  // },[isAuthenticated])
+
   return (
     <div className="storeItem">
       <img src={samples[0]['image_url']} alt="product-item"/>

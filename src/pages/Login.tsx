@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 import { SessionSchema } from '../validations/RegistrationValidation'
@@ -6,11 +7,10 @@ import { Link } from 'react-router-dom'
 
 
 const Login = () => {
-  const { createSession, session } = useSessionsContext()
-  console.log(session)
+  const { createSession, isAuthenticated } = useSessionsContext()
   let navigate = useNavigate();
-  const id_session = localStorage.getItem('session_id');
-  console.log(id_session)
+  // const id_session = localStorage.getItem('session_id');
+  
   const { handleSubmit, handleChange, errors, touched} = useFormik({
     initialValues: {
       email: '',
@@ -18,14 +18,17 @@ const Login = () => {
     },
     validationSchema: SessionSchema,
     onSubmit: values => {
-     if (id_session === null){
-      return
-     } else {
       createSession(values)
       navigate('/store')
-     }
     },
   })
+  
+  // useEffect(() => {
+  //   if(isAuthenticated){
+  //     navigate('/store')
+  //   }
+  // },[isAuthenticated])
+
   return (
     <div>
       <form onSubmit={handleSubmit}>

@@ -12,9 +12,10 @@ ReactModal.setAppElement('#root')
 const Modal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const {  items, removeFromCart } = useShoppingCart()
-  const { session } = useSessionsContext()
-  const id_session = localStorage.getItem('session_id');
+  const { isAuthenticated } = useSessionsContext()
 
+  console.log(isAuthenticated)
+  
   const handleDelete = (item: any) => {
     removeFromCart(item.id)
     pubsub.publish('resetCount', item.id)
@@ -22,7 +23,7 @@ const Modal = () => {
 
   return (
     <div className="modal-wrapper">
-      {id_session && <img onClick={() => setModalIsOpen(true)} className="cart" src={cart} />}
+      {isAuthenticated && <img onClick={() => setModalIsOpen(true)} className="cart" src={cart} />}
       <ReactModal 
           onRequestClose={() => setModalIsOpen(false)} 
           style={{

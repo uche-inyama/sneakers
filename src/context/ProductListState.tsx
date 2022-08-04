@@ -37,7 +37,7 @@ const ProductListState = ({children}: ProductListProviderProps) => {
 
   const getProducts = async () => {
     setLoading();
-    const res = await axios.get(`http://localhost:3000/products`)
+    const res = await axios.get(`https://blooming-anchorage-66508.herokuapp.com/products.json`)
     dispatch({
       type: GET_PRODUCTS,
       payload: res.data
@@ -46,7 +46,7 @@ const ProductListState = ({children}: ProductListProviderProps) => {
 
   const getProduct = async (id: any) => {
     setLoading();
-    const res = await axios.get(`http://localhost:3000/products/${id}`)
+    const res = await axios.get(`https://blooming-anchorage-66508.herokuapp.com/products/${id}.json`)
     dispatch({
       type: GET_PRODUCT,
       payload: res.data
