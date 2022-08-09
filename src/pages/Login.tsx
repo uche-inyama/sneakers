@@ -23,11 +23,11 @@ const Login = () => {
     },
   })
   
-  // useEffect(() => {
-  //   if(isAuthenticated){
-  //     navigate('/store')
-  //   }
-  // },[isAuthenticated])
+  useEffect(() => {
+    if(isAuthenticated){
+      navigate('/store')
+    }
+  },[isAuthenticated])
 
   return (
     <div>
@@ -42,7 +42,7 @@ const Login = () => {
         </div>
         <button className="submit-button" type="submit">Submit</button>
       </form>
-      <Link to="/register">Sign up</Link>
+      <Link to="/register" className="sign_in">Sign up</Link>
     </div>
   )
 }

@@ -16,13 +16,14 @@ type StoreItemProps = {
 
 const StoreItem = ({ id, name, product_price, samples }: StoreItemProps) => {
   const { isAuthenticated } = useSessionsContext()
+  console.log(localStorage.getItem('token'))
   const navigate = useNavigate()
 
-  // useEffect(() => {
-  //   if(!isAuthenticated){
-  //     navigate('/')
-  //   }
-  // },[isAuthenticated])
+  useEffect(() => {
+    if(!isAuthenticated){
+      navigate('/')
+    }
+  },[isAuthenticated])
 
   return (
     <div className="storeItem">

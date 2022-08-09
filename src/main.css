@@ -178,6 +178,7 @@
 .input-field {
   height: 40px;
   width: 300px;
+  font-family: "Kumbh Sans";
 }
 
 .submit-button {
@@ -185,6 +186,16 @@
   margin-bottom: 10px;
   width: 100%;
   cursor: pointer;
+  background-color: blue;
+  color: #fff;
+  border: 0;
+  font-weight: 600;
+  font-family: "Kumbh Sans";
+}
+
+.register, .sign_in {
+  font-family: "Kumbh Sans";
+  color: #000;
 }
 
 .ReactModal__Content {
@@ -205,6 +216,13 @@
   top: 25%;
   font-weight: 600;
 }
+
+.logo {
+  text-decoration: none;
+  color: #000;
+  font-family: "Kumbh Sans";
+}
+
 
 @media(min-width: 45rem) {
 

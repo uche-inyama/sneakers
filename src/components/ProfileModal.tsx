@@ -15,7 +15,9 @@ const Modal = () => {
   const handleLogout = () => {
     endSession()
     navigate('/')
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000)
   }
 
   const handleLogin = () => {

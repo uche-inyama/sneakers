@@ -14,7 +14,6 @@ const Modal = () => {
   const {  items, removeFromCart } = useShoppingCart()
   const { isAuthenticated } = useSessionsContext()
 
-  console.log(isAuthenticated)
   
   const handleDelete = (item: any) => {
     removeFromCart(item.id)

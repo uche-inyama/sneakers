@@ -43,7 +43,7 @@ const Registration = () => {
           </div>
           <button className="submit-button" type="submit">Submit</button>
         </form>
-        <Link to="/">Login</Link>
+        <Link to="/" className="register">Login</Link>
       </div>
     </div>
   )

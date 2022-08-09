@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { useShoppingCart } from '../context/ShoppingCartContext'
 import { toggle } from '../toggle'
@@ -17,18 +17,26 @@ const Navbar = () => {
     cartQuantity
   }, [cartQuantity])
 
+  const renderLogo = () => {
+    if(isAuthenticated){
+      return <Link to="/store" className="logo fw-700 fs-3">Sneakers</Link>
+    }else {
+      return <Link to="/" className="logo fw-700 fs-3">Sneakers</Link>
+    }
+  }
+
   return (
     <header>
       <div className="mobile-nav-wrapper">
         <button className="mobile-nav-toggle" onClick={handleToggle} aria-controls="primary-navigation">
           <span className="sr-only" aria-expanded="false">Menu</span>
         </button>
-        <div className="fw-700 fs-3">Sneakers</div>
+        <div>{renderLogo()}</div>
       </div>
       {isAuthenticated ? (
          <nav className="fs-2 text-Grayish-blue">
          <ul data-visible="false" className="primary-navigation">
-           <Link to='/store'>Collections</Link>
+           <Link to='/store' className="collections ff-Kumbh ">Collections</Link>
            {/* <li>Men</li>
            <li>Women</li>
            <li>About</li>
