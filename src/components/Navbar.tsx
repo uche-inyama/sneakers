@@ -9,16 +9,15 @@ import { useSessionsContext } from '../context/SessionContext'
 
 const Navbar = () => {
   const { cartQuantity } = useShoppingCart()
-  const { isAuthenticated } = useSessionsContext()
   const handleToggle = () => toggle();
+  const token = localStorage.getItem('token')
 
-
-  useEffect(() => {
-    cartQuantity
+  useEffect(() => {cartQuantity
   }, [cartQuantity])
 
+
   const renderLogo = () => {
-    if(isAuthenticated){
+    if(token){
       return <Link to="/store" className="logo fw-700 fs-3">Sneakers</Link>
     }else {
       return <Link to="/" className="logo fw-700 fs-3">Sneakers</Link>
@@ -33,7 +32,7 @@ const Navbar = () => {
         </button>
         <div>{renderLogo()}</div>
       </div>
-      {isAuthenticated ? (
+      {token ? (
          <nav className="fs-2 text-Grayish-blue">
          <ul data-visible="false" className="primary-navigation">
            <Link to='/store' className="collections ff-Kumbh ">Collections</Link>

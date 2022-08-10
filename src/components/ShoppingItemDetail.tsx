@@ -3,8 +3,6 @@ import { useParams } from 'react-router-dom';
 import { ProductListContext } from '../context/ProductListState'
 import DetailCard from './DetailCard';
 
-
-
 const ShoppingItemDetail = () => {
   let { id } = useParams()
   let id_param = Number(id)

@@ -6,7 +6,7 @@ import About from './pages/About'
 import ShoppingItemDetail from './components/ShoppingItemDetail'
 import Navbar from './components/Navbar'
 import RegisterationForm from './pages/Registration'
-import LoginForm from './pages/Login'
+import Login from './pages/Login'
 import { ShoppingCartProvider } from './context/ShoppingCartContext'
 import { RegistrationFormProvider } from './context/RegistrationContext'
 import { SessionsProvider } from './context/SessionContext'
@@ -14,7 +14,7 @@ import ProductListState from './context/ProductListState'
 import { useSessionsContext } from './context/SessionContext'
 
 function App() {
-
+ 
   return ( 
     <ProductListState>
       <ShoppingCartProvider>

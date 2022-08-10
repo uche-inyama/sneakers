@@ -11,26 +11,27 @@ const Login = () => {
   let navigate = useNavigate();
   // const id_session = localStorage.getItem('session_id');
   
-  const { handleSubmit, handleChange, errors, touched} = useFormik({
+  const { handleSubmit, handleChange, errors, touched } = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
     validationSchema: SessionSchema,
     onSubmit: values => {
+      console.log(values)
       createSession(values)
       navigate('/store')
     },
   })
   
-  useEffect(() => {
-    if(isAuthenticated){
-      navigate('/store')
-    }
-  },[isAuthenticated])
+  // useEffect(() => {
+  //   if(isAuthenticated){
+  //     navigate('/store')
+  //   }
+  // },[isAuthenticated])
 
   return (
-    <div>
+    <div className="home">
       <form onSubmit={handleSubmit}>
         <div className="field sign-in">
           <input className="input-field" name="email" onChange={handleChange} type="email" placeholder="Email"/>
@@ -47,4 +48,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Login;
