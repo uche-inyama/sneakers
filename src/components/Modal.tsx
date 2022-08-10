@@ -5,12 +5,15 @@ import { formatCurrency, discount_value } from '../utilities/formatCurrency'
 import trash from '../images/icon-delete.svg'
 import cart from '../images/icon-cart.svg'
 import { pubsub } from '../utilities/pubsub'
+import { useSessionsContext } from '../context/SessionContext'
 
 
 ReactModal.setAppElement('#root')
 const Modal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const {  items, removeFromCart } = useShoppingCart()
+  const {  items, removeFromCart } = useShoppingCart();
+  const { isAuthenticated } = useSessionsContext()
+
   const token = localStorage.getItem('token')
 
   const handleDelete = (item: any) => {
@@ -20,7 +23,7 @@ const Modal = () => {
 
   return (
     <div className="modal-wrapper">
-      {token && <img onClick={() => setModalIsOpen(true)} className="cart" src={cart} />}
+      {(token || isAuthenticated) && <img onClick={() => setModalIsOpen(true)} className="cart" src={cart} />}
       <ReactModal 
           onRequestClose={() => setModalIsOpen(false)} 
           style={{

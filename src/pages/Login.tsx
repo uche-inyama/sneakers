@@ -31,7 +31,7 @@ const Login = () => {
   // },[isAuthenticated])
 
   return (
-    <div className="home">
+    <div>
       <form onSubmit={handleSubmit}>
         <div className="field sign-in">
           <input className="input-field" name="email" onChange={handleChange} type="email" placeholder="Email"/>
