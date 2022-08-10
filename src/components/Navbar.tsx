@@ -9,8 +9,11 @@ import { useSessionsContext } from '../context/SessionContext'
 
 const Navbar = () => {
   const { cartQuantity } = useShoppingCart()
+  const { isAuthenticated } = useSessionsContext()
   const handleToggle = () => toggle();
   const token = localStorage.getItem('token')
+
+  console.log(token, isAuthenticated)
 
   useEffect(() => {cartQuantity
   }, [cartQuantity])
@@ -32,7 +35,7 @@ const Navbar = () => {
         </button>
         <div>{renderLogo()}</div>
       </div>
-      {token ? (
+      {(token || isAuthenticated) ? (
          <nav className="fs-2 text-Grayish-blue">
          <ul data-visible="false" className="primary-navigation">
            <Link to='/store' className="collections ff-Kumbh ">Collections</Link>
