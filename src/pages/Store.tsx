@@ -11,7 +11,7 @@ const Store = () => {
     getProducts()
   }, [])
 
-  if (loading) return <div>loading...</div>
+  if (loading) return <div className="loading ff-Kumbh">loading...</div>
 
   return (
     <>

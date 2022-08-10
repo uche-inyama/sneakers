@@ -223,6 +223,9 @@
   font-family: "Kumbh Sans";
 }
 
+.loading {
+  text-align: center;
+}
 
 @media(min-width: 45rem) {
 
