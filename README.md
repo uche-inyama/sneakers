@@ -3,7 +3,7 @@
 ## Built With
      - Html
      - CSS
-     - JavaScript, 
+     - JavaScript
      - React
      - Redux
 
