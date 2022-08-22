@@ -1,10 +1,14 @@
 # SNEAKERS SHOP
 
 ## Built With
-     JavaScript, Html and CSS
-     React, Redux
+     - Html
+     - CSS
+     - JavaScript, 
+     - React
+     - Redux
 
 ## Live Demo 
+[Live Demo Link](https://zingy-trifle-a46a4b.netlify.app/)
 
 ## Getting Started
 
