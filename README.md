@@ -1,7 +1,11 @@
-
-
 # SNEAKERS SHOP
 
+![sneak](https://user-images.githubusercontent.com/46329537/185915291-0ba3d627-8b82-458c-953a-eff71f990b74.png)
+
+
+    This is an application, where users can view list of sneakers, 
+    select and add them to cart, then proceed to checkout.
+     
 ## Built With
      - Html
      - CSS
