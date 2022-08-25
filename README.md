@@ -16,7 +16,7 @@
 ## Live Demo 
 [Live Demo Link](https://zingy-trifle-a46a4b.netlify.app/)
 ### Credentials: 
-      email: jdoe@gmail.com password: password
+      email: jdoe@gmail.com, password: password
 
 ## Getting Started
 
