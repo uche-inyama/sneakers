@@ -29,6 +29,6 @@
 ### Usage
      Run: npm run dev
 
-### Authors
+### Author: Inyama, Uchechukwu Henry
 
 LinkedIn: [@linkedInhandle](https://www.linkedin.com/in/uchechukwu-inyama)
