@@ -12,7 +12,6 @@ type StoreItemProps = {
 }
 
 const StoreItem = ({ id, name, product_price, samples }: StoreItemProps) => {
-
   return (
     <div className="storeItem">
       <img src={samples[0]['image_url']} alt="product-item"/>

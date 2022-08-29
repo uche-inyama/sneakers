@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import ReactModal from 'react-modal';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import avatar from '../images/image-avatar.png'
 import { addClassName } from '../utilities/toggle'
 import { useSessionsContext } from '../context/SessionContext'
@@ -8,6 +8,7 @@ import { useSessionsContext } from '../context/SessionContext'
 
 ReactModal.setAppElement('#root')
 const Modal = () => {
+  const location = useLocation();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const { endSession, isAuthenticated } = useSessionsContext()
   const token = localStorage.getItem('token')
@@ -16,10 +17,11 @@ const Modal = () => {
   
   const handleLogout = () => {
     endSession()
-    setTimeout(() => {
-      navigate('/')
-      window.location.reload();
-    }, 500)
+    
+    // setTimeout(() => {
+    //   navigate('/')
+    //   window.location.reload();
+    // }, 500)
   }
 
   const handleLogin = () => {

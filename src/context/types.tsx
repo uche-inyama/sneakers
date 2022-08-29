@@ -7,3 +7,7 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const CREATE_USER = 'CREATE_USER';
 export const CREATE_SESSION = 'CREATE_SESSION';
 export const END_SESSION = 'END_SESSION';
+export const SET_ALERT = 'SET_ALERT';
+export const CLEAR_ALERT = 'CLEAR_ALERT';
+export const SET_NOTICE = 'SET_NOTICE';
+export const CLEAR_NOTICE = 'CLEAR_NOTICE';

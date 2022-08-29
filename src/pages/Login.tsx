@@ -1,13 +1,14 @@
 import { useFormik } from 'formik'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { SessionSchema } from '../validations/RegistrationValidation'
 import { useSessionsContext } from '../context/SessionContext'
 import { Link } from 'react-router-dom'
 
 
 const Login = () => {
+  const location = useLocation()
   const { createSession, isAuthenticated } = useSessionsContext()
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
   
   const { handleSubmit, handleChange, errors, touched } = useFormik({
     initialValues: {
@@ -16,14 +17,19 @@ const Login = () => {
     },
     validationSchema: SessionSchema,
     onSubmit: values => {
-      console.log(values)
       createSession(values)
-      navigate('/store')
     },
   })
+
+  const notification = () => (
+    <div key={location.state.type} className={`alert alert-${location.state.type}`}>
+      <i className='fas fa-info-circle' />{location.state.msg}
+  </div>
+  )
   
   return (
     <div>
+      <div>{ notification() }</div>
       <form onSubmit={handleSubmit}>
         <div className="field sign-in">
           <input className="input-field" name="email" onChange={handleChange} type="email" placeholder="Email"/>
