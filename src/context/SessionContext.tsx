@@ -3,7 +3,7 @@ import { ReactNode, createContext, useContext, useReducer } from 'react';
 import { useNavigate } from 'react-router-dom'
 import setAuthToken from '../utilities/setAuthToken';
 import SessionsReducer from './SessionsReducer';
-import { CREATE_SESSION, END_SESSION, GET_PRODUCTS } from './types';
+import { CLEAR_NOTICE, CREATE_SESSION, END_SESSION, GET_PRODUCTS } from './types';
 
 
 type SessionsproviderProps = {
@@ -33,6 +33,8 @@ export const useSessionsContext = () => {
 export const SessionsProvider = ({children}: SessionsproviderProps) => {
   const navigate = useNavigate()
   const initialState = {
+    alert: '',
+    notice: '',
     session: null,
     token: localStorage.getItem('token'),
     isAuthenticated: false,
@@ -72,7 +74,6 @@ export const SessionsProvider = ({children}: SessionsproviderProps) => {
         }
       });
       navigate('/store', { replace: true, state: { msg: "You have signed in successfully", type: 'notice' } })
-      // loadProduct()
       console.log(res.data)
     } catch (error) {
       console.error(error)
@@ -89,8 +90,7 @@ export const SessionsProvider = ({children}: SessionsproviderProps) => {
         type: END_SESSION,
         payload: undefined
       })
-      navigate('/', { replace: true, state: { msg: "You have signed out successfully", type: 'notice' } })
-
+      navigate('/', { replace: true, state: { msg: "You have signed out successfully", type: 'notice', status: true } })
     } catch (error) {
       console.error(error)
     }

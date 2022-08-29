@@ -13,20 +13,16 @@ const Modal = () => {
   const { endSession, isAuthenticated } = useSessionsContext()
   const token = localStorage.getItem('token')
 
-  const navigate  = useNavigate()
+  const navigate  = useNavigate();
   
   const handleLogout = () => {
-    endSession()
-    
-    // setTimeout(() => {
-    //   navigate('/')
-    //   window.location.reload();
-    // }, 500)
+    endSession();
   }
 
   const handleLogin = () => {
     navigate('/')
   }
+
 
   return (
     <div className="modal-wrapper">

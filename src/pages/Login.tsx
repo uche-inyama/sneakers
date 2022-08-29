@@ -1,4 +1,5 @@
-import { useFormik } from 'formik'
+import { useEffect, useState } from 'react';
+import { useFormik } from 'formik';
 import { useNavigate, useLocation } from 'react-router-dom'
 import { SessionSchema } from '../validations/RegistrationValidation'
 import { useSessionsContext } from '../context/SessionContext'
@@ -6,10 +7,18 @@ import { Link } from 'react-router-dom'
 
 
 const Login = () => {
-  const location = useLocation()
-  const { createSession, isAuthenticated } = useSessionsContext()
-  // let navigate = useNavigate();
-  
+
+  const location: any = useLocation()
+  const [isFalse, setFalse] = useState(false)
+  const { createSession } = useSessionsContext()
+  const status = localStorage.getItem('isFalse')
+
+  useEffect(() => {
+    setTimeout(() => {
+     localStorage.removeItem('isFalse')
+    }, 500)
+  }, [isFalse])
+
   const { handleSubmit, handleChange, errors, touched } = useFormik({
     initialValues: {
       email: '',
@@ -22,14 +31,19 @@ const Login = () => {
   })
 
   const notification = () => (
-    <div key={location.state.type} className={`alert alert-${location.state.type}`}>
+    <div key={location.state.type} className={`logout alert alert-${location.state.type}`}>
       <i className='fas fa-info-circle' />{location.state.msg}
-  </div>
+    </div>
   )
-  
+
+  status && setTimeout(() => {
+    const alert: any = document.querySelector('.logout')
+    alert.style.display = 'none'
+  }, 5000);
+
   return (
     <div>
-      <div>{ notification() }</div>
+      <div>{ status && notification() }</div>
       <form onSubmit={handleSubmit}>
         <div className="field sign-in">
           <input className="input-field" name="email" onChange={handleChange} type="email" placeholder="Email"/>

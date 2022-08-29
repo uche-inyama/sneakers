@@ -1,4 +1,4 @@
-import { CREATE_SESSION, END_SESSION } from './types'
+import { CREATE_SESSION, END_SESSION, CLEAR_ALERT, CLEAR_NOTICE } from './types'
 
 type action = {
   type: string
@@ -18,6 +18,7 @@ const SessionsReducer = (state :state, action :action) => {
   switch(action.type){
     case CREATE_SESSION: 
       localStorage.setItem('token', action.payload.data.token)
+      localStorage.setItem('isFalse', 'true')
       return {
         ...state,
         ...action.payload,
@@ -33,6 +34,10 @@ const SessionsReducer = (state :state, action :action) => {
         loading: false,
         error: action.payload
       }
+    case CLEAR_NOTICE:
+      return {...state, notice: '' }
+    case CLEAR_ALERT:
+      return { ...state, alert: '' }
     default:
       return state
   }
