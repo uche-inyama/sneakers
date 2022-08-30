@@ -3,14 +3,12 @@ import { formatCurrency, discount_value } from '../utilities/formatCurrency'
 import { useShoppingCart } from '../context/ShoppingCartContext'
 import cartImage from "../images/icon-cart.svg"
 import { pubsub } from '../utilities/pubsub'
-import { useNotificationContext } from '../context/notificationContext'
 
 const DetailCard = ({id, product}: any) => {
   const { addToCart, msg, type, } = useShoppingCart();
   const { marketing_statement, product_price, product_discount, samples } = product;
   const [image, setImage] = useState(samples[0]['image_url']);
   const sample_image = samples[0]['image_url'];
-  const { setAlert } = useNotificationContext();
   let [count, setCount] = useState(0);
 
   const reset = () => {
@@ -47,17 +45,15 @@ const DetailCard = ({id, product}: any) => {
   }
 
   const notification = () => (
-    <div key={type} className={`ff-Kumbh add-to-cart-notification alert alert-${type}`}>
-     <i className='fas fa-info-circle' />{msg}
+    <div key={type} className={`notify add-to-cart-notification ff-Kumbh alert alert-${type}`}>
+      <div className='empty-space' />
+      <div className="message">{msg}</div>
+      <div className="empty-space"/>
     </div>
   )
 
   msg && setTimeout(() => {
-    // const alert: any = document.querySelector('.add-to-cart-notification');
     const on: any = document.querySelector('.on');
-    // alert.style.color = '#fff';
-    // alert.style.backgroundColor = '#fff'
-    // alert.style.innerText = "";
     on.classList.add("off");
   }, 10000);
 

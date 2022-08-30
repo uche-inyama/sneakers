@@ -244,7 +244,8 @@
   text-align: center;
 }
 
-.login-notification {
+.login-notification,
+.add-to-cart-notification {
   margin-bottom: 10px;
 }
 
@@ -256,7 +257,6 @@
 @media(min-width: 45rem) {
 
   main {
-    display: grid;
     height: 90vh;
     margin-top: 80px;
     display: grid;
@@ -358,6 +358,34 @@
 
   .login-notification {
     width: 95%;
+  }
+
+  .login-notification,
+  .add-to-cart-notification {
+    margin-bottom: 0px;
+  }
+
+  .notify {
+    display: grid;
+    grid-template-rows: min-content;
+    grid-template-columns: minmax(1em, 1fr) repeat(2, minmax(0, 34rem)) minmax(1em, 1fr);
+    grid-template-areas: 
+    ". message message .";
+    padding: 0;
+  }
+  .message {
+    grid-area: message;
+    max-width: 100%;
+    border-radius: 5px;
+    grid-column: 2/4;
+    border-radius: 5px;
+    border: 0 0 #fff;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .empty-space {
+    background-color: #fff;
   }
 
 }
