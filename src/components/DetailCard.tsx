@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { formatCurrency, discount_value } from '../utilities/formatCurrency'
 import { useShoppingCart } from '../context/ShoppingCartContext'
 import cartImage from "../images/icon-cart.svg"

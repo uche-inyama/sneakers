@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { formatCurrency } from '../utilities/formatCurrency'
 import { Link } from 'react-router-dom'
 

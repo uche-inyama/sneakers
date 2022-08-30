@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState, useReducer } from 'react'
+import { createContext, ReactNode, useContext, useReducer } from 'react'
 import RegistrationReducer from './RegistrationReducer'
 import { CREATE_USER } from './types'
 import axios from 'axios'

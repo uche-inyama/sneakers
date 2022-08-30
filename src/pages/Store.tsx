@@ -30,7 +30,6 @@ const Store = () => {
     on.classList.add("off");
   }, 5000);
 
-   
   return (
     <>
       {isAuthenticated && <div>{notification()}</div>}

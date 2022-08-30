@@ -3,7 +3,7 @@ import { ReactNode, createContext, useContext, useReducer } from 'react';
 import { useNavigate } from 'react-router-dom'
 import setAuthToken from '../utilities/setAuthToken';
 import SessionsReducer from './SessionsReducer';
-import { CLEAR_NOTICE, CREATE_SESSION, END_SESSION, GET_PRODUCTS } from './types';
+import { CREATE_SESSION, END_SESSION, GET_PRODUCTS } from './types';
 
 
 type SessionsproviderProps = {

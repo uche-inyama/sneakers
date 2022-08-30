@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ProductListContext } from '../context/ProductListState'
 import DetailCard from './DetailCard';
