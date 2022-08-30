@@ -244,9 +244,13 @@
   text-align: center;
 }
 
+.login-notification {
+  margin-bottom: 10px;
+}
+
 .off {
-    transform: translateY(-4px);
-    transition: transform 500ms ease-in-out;
+  transform: translateY(-4px);
+  transition: transform 500ms ease-in-out;
 }
 
 @media(min-width: 45rem) {

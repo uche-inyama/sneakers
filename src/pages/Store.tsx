@@ -32,7 +32,7 @@ const Store = () => {
 
   return (
     <>
-      {isAuthenticated && <div>{notification()}</div>}
+      {isAuthenticated && notification()}
       <div className="on product-list">
         {products.map(item =>
           <div key={item.id}><StoreItem samples={undefined} {...item} /></div>
