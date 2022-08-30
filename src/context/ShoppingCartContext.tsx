@@ -1,7 +1,7 @@
 import { useReducer, createContext, ReactNode, useContext } from 'react'
 import ShoppingCartReducer from './ShoppingCartReducer'
 import axios from 'axios'
-import { ADD_TO_CART, SET_LOADING, REMOVE_FROM_CART } from './types'
+import { ADD_TO_CART, SET_LOADING, REMOVE_FROM_CART, CLEAR_NOTICE } from './types'
 
 type ShoppingCartProviderProps = {
   children: ReactNode
@@ -25,6 +25,8 @@ type ShoppingCartContext = {
   items: CartItem[]
   item: CartItem
   loading: boolean
+  msg: string
+  type: string
 }
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext)
@@ -39,7 +41,9 @@ export const ShoppingCartProvider = ({children}:
   const initialState  = {
     Items: [],
     Item: null,
-    loading: false
+    loading: false,
+    msg: '',
+    type: ''
   }
   
   const [state, dispatch] = useReducer(ShoppingCartReducer, initialState)
@@ -55,6 +59,7 @@ export const ShoppingCartProvider = ({children}:
         type: REMOVE_FROM_CART,
         payload: id
       })
+      setTimeout(() => dispatch({ type: CLEAR_NOTICE, payload: undefined }), 5000)
     } catch (error) {
       console.error(error)
     }
@@ -83,6 +88,7 @@ export const ShoppingCartProvider = ({children}:
         type: ADD_TO_CART,
         payload: res.data
       })
+      setTimeout(() => dispatch({ type: CLEAR_NOTICE, payload: undefined }), 5000)
     } catch (error) {
       console.error(error)
     }
@@ -97,7 +103,9 @@ export const ShoppingCartProvider = ({children}:
       setLoading,
       loading: state.loading,
       items: state.Items,
-      item: state.Item
+      item: state.Item,
+      type: state.type,
+      msg: state.msg,
     }}
     >
       {children}

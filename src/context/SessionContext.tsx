@@ -74,7 +74,6 @@ export const SessionsProvider = ({children}: SessionsproviderProps) => {
         }
       });
       navigate('/store', { replace: true, state: { msg: "You have signed in successfully", type: 'notice' } })
-      console.log(res.data)
     } catch (error) {
       console.error(error)
     }

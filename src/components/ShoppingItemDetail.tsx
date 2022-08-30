@@ -14,8 +14,11 @@ const ShoppingItemDetail = () => {
   
   if(loading || product === null) return <div className="loading ff-Kumbh">loading...</div>
 
+
   return (
-    <DetailCard product={product} id={id_param}/>
+    <div>
+      <DetailCard product={product} id={id_param}/>
+    </div>
   )
 };
 

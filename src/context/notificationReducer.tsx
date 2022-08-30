@@ -6,8 +6,8 @@ interface action {
 }
 
 interface state {
-  notice: string
-  alert: string
+  msg: string
+  type: string
 }
 
 const NotificationReducer = (state :state, action :action) => {

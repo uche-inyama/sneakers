@@ -14,28 +14,29 @@ type NotificationContext = {
 
 const NotificationContext = createContext({} as NotificationContext)
 
-export const useNotification = () => {
+export const useNotificationContext = () => {
   return useContext(NotificationContext)
 }
 
-export const NotificationProviderProps = ({}: NotificationProviderProps) => {
+export const NotificationProvider = ({children}: NotificationProviderProps) => {
   const initialState = {
-    alert: '',
-    notice: ''
+    msg: '',
+    type: ''
   }
-  const [_, dispatch] = useReducer(NotificationReducer, initialState);
+
+  const [state, dispatch] = useReducer(NotificationReducer, initialState);
 
   const setAlert = (msg: any, type: any, timeout = 5000) => {
-    const id = uuid()
+    const id = 1;
     dispatch({
       type: SET_ALERT,
       payload: { msg, type, id }
     });
-    setTimeout(() => dispatch({ type: CLEAR_ALERT, payload: id }), timeout)
+    setTimeout(() => dispatch({ type: CLEAR_ALERT, payload: id }), timeout);
   }
 
   const setNotice = (msg: string, type: any, timeout=5000) => {
-    const id = uuid()
+    const id = 1
     dispatch({
       type: SET_NOTICE,
       payload: { msg, type, id }

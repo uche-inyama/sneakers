@@ -4,7 +4,6 @@ import StoreItem from '../components/StoreItem'
 import { ProductListContext } from '../context/ProductListState'
 import { useSessionsContext } from '../context/SessionContext'
 
-
 const Store = () => {
   const Context = useContext(ProductListContext);
   const { isAuthenticated } = useSessionsContext()
