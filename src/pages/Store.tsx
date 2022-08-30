@@ -28,7 +28,7 @@ const Store = () => {
     const on: any = document.querySelector('.on');
     alert.style.display = 'none';
     on.classList.add("off");
-  }, 5000);
+  }, 10000);
 
   return (
     <>
