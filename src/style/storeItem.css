@@ -15,7 +15,7 @@
 
 .product-name,
 .product-price {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
 }
 
 .product-price {
@@ -37,9 +37,10 @@
 }
 
 @media(min-width: 45rem) {
-  .main-container {
+  .product-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    margin-top: 20px;
   }
 }

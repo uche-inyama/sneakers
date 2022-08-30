@@ -18,21 +18,23 @@ const Store = () => {
   if (loading) return <div className="loading ff-Kumbh">loading...</div>
 
   const notification = () => (
-     <div key={location.state.type} className={`login alert alert-${location.state.type}`}>
-    <i className='fas fa-info-circle' />{location.state.msg}
-  </div>
+     <div key={location.state.type} className={`ff-Kumbh login-notification alert alert-${location.state.type}`}>
+      <i className='fas fa-info-circle' />{location.state.msg}
+    </div>
   )
-  const alert: any = document.querySelector('.login')
 
   setTimeout(() => {
-    alert.style.display = 'none'
-  }, 10000);
+    const alert: any = document.querySelector('.login-notification');
+    const on: any = document.querySelector('.on');
+    alert.style.display = 'none';
+    on.classList.add("off");
+  }, 5000);
 
    
   return (
     <>
       {isAuthenticated && <div>{notification()}</div>}
-      <div className="ff-Kumbh main-container">
+      <div className="on product-list">
         {products.map(item =>
           <div key={item.id}><StoreItem samples={undefined} {...item} /></div>
         )}

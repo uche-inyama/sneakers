@@ -3,7 +3,6 @@ import ShoppingCartReducer from './ShoppingCartReducer'
 import axios from 'axios'
 import { ADD_TO_CART, SET_LOADING, REMOVE_FROM_CART } from './types'
 
-
 type ShoppingCartProviderProps = {
   children: ReactNode
 }

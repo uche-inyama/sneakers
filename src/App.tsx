@@ -21,13 +21,15 @@ function App() {
         <RegistrationFormProvider>
           <SessionsProvider>
             <Navbar />
-            <Routes>
-              <Route path="/product/:id/detail" element={<ShoppingItemDetail />} />
-              <Route path="/" element={<Home />}/>
-              <Route path="/register" element={<RegisterationForm />} />
-              <Route path="/store" element={<Store />} />
-              <Route path="/about" element={<About />} />
-            </Routes>
+            <div className="ff-Kumbh main-container">
+              <Routes>
+                <Route path="/product/:id/detail" element={<ShoppingItemDetail />} />
+                <Route path="/" element={<Home />}/>
+                <Route path="/register" element={<RegisterationForm />} />
+                <Route path="/store" element={<Store />} />
+                <Route path="/about" element={<About />} />
+              </Routes>
+            </div>
           </SessionsProvider>
           </RegistrationFormProvider>
       </ShoppingCartProvider>

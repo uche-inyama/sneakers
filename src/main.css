@@ -232,6 +232,23 @@
   font-size: 0.8rem;
 }
 
+.logout-notification {
+  margin-bottom: 20px;
+}
+
+.alert-notice {
+  color: #055160;
+  background-color: #cff4fc;
+  border-color: #b6effb;
+  padding: 15px;
+  text-align: center;
+}
+
+.off {
+    transform: translateY(-4px);
+    transition: transform 500ms ease-in-out;
+}
+
 @media(min-width: 45rem) {
 
   main {
@@ -326,4 +343,17 @@
     height: 40px;
     width: 300px;
   }
+
+  .alert-notice {
+    color: #055160;
+    background-color: #cff4fc;
+    border-color: #b6effb;
+    padding: 15px;
+    text-align: center;
+  }
+
+  .login-notification {
+    width: 95%;
+  }
+
 }

@@ -1,23 +1,14 @@
-import { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { SessionSchema } from '../validations/RegistrationValidation'
 import { useSessionsContext } from '../context/SessionContext'
 import { Link } from 'react-router-dom'
 
 
 const Login = () => {
-
   const location: any = useLocation()
-  const [isFalse, setFalse] = useState(false)
   const { createSession } = useSessionsContext()
   const status = localStorage.getItem('isFalse')
-
-  useEffect(() => {
-    setTimeout(() => {
-     localStorage.removeItem('isFalse')
-    }, 500)
-  }, [isFalse])
 
   const { handleSubmit, handleChange, errors, touched } = useFormik({
     initialValues: {
@@ -31,19 +22,22 @@ const Login = () => {
   })
 
   const notification = () => (
-    <div key={location.state.type} className={`logout alert alert-${location.state.type}`}>
+    <div key={location.state.type} className={`ff-Kumbh logout-notification alert alert-${location.state.type}`}>
       <i className='fas fa-info-circle' />{location.state.msg}
     </div>
   )
 
   status && setTimeout(() => {
-    const alert: any = document.querySelector('.logout')
+    const alert: any = document.querySelector('.logout-notification')
+    const on: any = document.querySelector('.on');
     alert.style.display = 'none'
+    on.classList.add("off");
+    localStorage.removeItem('isFalse');
   }, 5000);
 
   return (
-    <div>
-      <div>{ status && notification() }</div>
+    <div className="on">
+      { status && notification() }
       <form onSubmit={handleSubmit}>
         <div className="field sign-in">
           <input className="input-field" name="email" onChange={handleChange} type="email" placeholder="Email"/>
@@ -56,7 +50,7 @@ const Login = () => {
         <button className="submit-button" type="submit">Submit</button>
       </form>
       <Link to="/register" className="sign_in">Sign up</Link>
-    </div>
+  </div>
   )
 }
 

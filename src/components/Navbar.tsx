@@ -13,8 +13,6 @@ const Navbar = () => {
   const handleToggle = () => toggle();
   const token = localStorage.getItem('token')
 
-  console.log(token, isAuthenticated)
-
   useEffect(() => {cartQuantity
   }, [cartQuantity])
 
