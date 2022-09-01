@@ -258,7 +258,8 @@
   position: absolute;
   z-index: 1000;
   top: 200px;
-  width: 95%;
+  width: 92%;
+  left: 15px;
 }
 
 @media(min-width: 45rem) {
