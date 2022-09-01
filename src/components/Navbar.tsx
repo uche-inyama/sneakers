@@ -21,16 +21,16 @@ const Navbar = () => {
     if(token){
       return <Link to="/store" className="logo fw-700 fs-3">Sneakers</Link>
     }else {
-      return <Link to="/" className="logo fw-700 fs-3">Sneakers</Link>
+      return <Link to="/" className="unauth logo fw-700 fs-3">Sneakers</Link>
     }
   }
 
   return (
     <header>
       <div className="mobile-nav-wrapper">
-        <button className="mobile-nav-toggle" onClick={handleToggle} aria-controls="primary-navigation">
+     { token && <button className="mobile-nav-toggle" onClick={handleToggle} aria-controls="primary-navigation">
           <span className="sr-only" aria-expanded="false">Menu</span>
-        </button>
+        </button>}
         <div>{renderLogo()}</div>
       </div>
       {(token || isAuthenticated) ? (
