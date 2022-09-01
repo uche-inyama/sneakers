@@ -45,7 +45,7 @@ const DetailCard = ({id, product}: any) => {
   }
 
   const notification = () => (
-    <div key={type} className={`notify add-to-cart-notification ff-Kumbh alert alert-${type}`}>
+    <div key={type} className={`notify add-to-cart-notification ff-Kumbh alert alert-${type} on`}>
       <div className='empty-space' />
       <div className="message">{msg}</div>
       <div className="empty-space"/>

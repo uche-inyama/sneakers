@@ -59,7 +59,7 @@ export const ShoppingCartProvider = ({children}:
         type: REMOVE_FROM_CART,
         payload: id
       })
-      setTimeout(() => dispatch({ type: CLEAR_NOTICE, payload: undefined }), 5000)
+      setTimeout(() => dispatch({ type: CLEAR_NOTICE, payload: undefined }), 7000)
     } catch (error) {
       console.error(error)
     }
@@ -88,7 +88,7 @@ export const ShoppingCartProvider = ({children}:
         type: ADD_TO_CART,
         payload: res.data
       })
-      setTimeout(() => dispatch({ type: CLEAR_NOTICE, payload: undefined }), 5000)
+      setTimeout(() => dispatch({ type: CLEAR_NOTICE, payload: undefined }), 7000)
     } catch (error) {
       console.error(error)
     }
