@@ -19,7 +19,7 @@
       email: johndoe@gmail.com, password: password
 
 ## Backend code.
-    [link](https://github.com/uche-inyama/sneaker-api)
+[Link to backend code](https://github.com/uche-inyama/sneaker-api)
     
 ## Getting Started
 
