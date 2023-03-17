@@ -52,9 +52,9 @@ export const ShoppingCartProvider = ({children}:
     (quantity: number, item: { quantity: number }) => item.quantity + quantity, 0
   )
 
-  function removeFromCart(id: number) {
+  function removeFromCart(id: number) { 
     try {
-      axios.delete(`https://blooming-anchorage-66508.herokuapp.com/cart/${id}/remove`)
+      axios.delete(`https://sneaker-api-new.onrender.com/cart/${id}/remove`)
       dispatch({
         type: REMOVE_FROM_CART,
         payload: id
@@ -75,7 +75,7 @@ export const ShoppingCartProvider = ({children}:
     try {
       const res =  await axios({
         method: 'POST',
-        url: `https://blooming-anchorage-66508.herokuapp.com/cart/${args[0]}/add`,
+        url: `https://sneaker-api-new.onrender.com/cart/${args[0]}/add`,
         data: { 
           quantity: args[1],
           image: args[2],

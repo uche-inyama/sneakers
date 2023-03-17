@@ -10,6 +10,8 @@ const Store = () => {
   const { getProducts, loading, products } = Context;
   const location: any = useLocation();
 
+  console.log(products)
+
   useEffect(() => {
     getProducts()
   }, [])

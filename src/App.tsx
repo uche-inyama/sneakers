@@ -31,7 +31,6 @@ function App() {
           </RegistrationFormProvider>
       </ShoppingCartProvider>
     </ProductListState>
-
 )};
 
 export default App;

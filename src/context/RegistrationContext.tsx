@@ -31,10 +31,11 @@ export const RegistrationFormProvider = ({children}: RegistrationFormProviderPro
   }
   const [state, dispatch] = useReducer(RegistrationReducer, initialState)
   const createUser = async (userData: user) => {
+    console.log(userData)
    try {
       const res = await axios({
         method: 'POST',
-        url: 'https://blooming-anchorage-66508.herokuapp.com/users',
+        url: 'https://sneaker-api-new.onrender.com/users.json',
         data: userData
       })
       console.log(res.data)

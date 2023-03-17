@@ -14,6 +14,7 @@ const Modal = () => {
   const token = localStorage.getItem('token')
 
   const handleLogout = () => {
+    console.log("logging out")
     endSession();
   }
 

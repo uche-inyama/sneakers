@@ -6,6 +6,7 @@ import { pubsub } from '../utilities/pubsub'
 
 const DetailCard = ({id, product}: any) => {
   const { addToCart, msg, type, } = useShoppingCart();
+  console.log(id, product)
   const { marketing_statement, product_price, product_discount, samples } = product;
   const [image, setImage] = useState(samples[0]['image_url']);
   const sample_image = samples[0]['image_url'];

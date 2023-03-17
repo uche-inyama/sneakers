@@ -48,7 +48,7 @@ export const SessionsProvider = ({children}: SessionsproviderProps) => {
       setAuthToken(localStorage.token);
     }
     try {
-      const res = await axios.get('https://blooming-anchorage-66508.herokuapp.com//products')
+      const res = await axios.get('https://sneaker-api-new.onrender.com/products')
       dispatch({
         type: GET_PRODUCTS,
         payload: res.data
@@ -59,12 +59,14 @@ export const SessionsProvider = ({children}: SessionsproviderProps) => {
   }
 
   const createSession = async (sessionData: session) => {
+    console.log(sessionData)
    try {
       const res = await axios({
         method: 'POST',
-        url: 'https://blooming-anchorage-66508.herokuapp.com/users/sign_in',
-        data: sessionData
+        url: 'https://sneaker-api-new.onrender.com/users/sign_in.json',
+        data: sessionData  
       })
+      console.log(res)
       dispatch({
         type: CREATE_SESSION,
         payload: {
@@ -80,10 +82,11 @@ export const SessionsProvider = ({children}: SessionsproviderProps) => {
   }
 
   const endSession = async () => {
+    console.log('endSession')
     try {
         await axios({
         method: 'DELETE',
-        url: 'https://blooming-anchorage-66508.herokuapp.com/users/sign_out'
+        url: 'https://sneaker-api-new.onrender.com/users/sign_out.json'
       })
       dispatch({
         type: END_SESSION,

@@ -7,7 +7,6 @@ const ShoppingItemDetail = () => {
   let { id } = useParams()
   let id_param = Number(id)
   const { getProduct, product, loading } = useContext(ProductListContext)
-
   useEffect(() => {
     getProduct(id_param)
   }, [id_param])
