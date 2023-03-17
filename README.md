@@ -18,7 +18,7 @@
 ### Credentials: 
       email: johndoe@gmail.com, password: password
 
-## Live Backend Demo
+## Backend Details
 [Live Demo Link](https://sneaker-api-new.onrender.com/)
 ### Credentials: 
       email: johndoe@gmail.com, password: password
