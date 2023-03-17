@@ -20,9 +20,11 @@
 
 ## Live Backend Demo
 [Live Demo Link](https://sneaker-api-new.onrender.com/)
+### Credentials: 
+      email: johndoe@gmail.com, password: password
 
 ## Backend code.
-[Link to backend code](https://github.com/uche-inyama/sneaker-api)
+[Link to backend code](https://github.com/uche-inyama/new_sneaker-api/tree/main)
     
 ## Getting Started
 
