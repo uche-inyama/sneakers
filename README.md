@@ -14,7 +14,7 @@
      - Redux
 
 ## Live Demo 
-[Live Demo Link](https://zingy-trifle-a46a4b.netlify.app/)
+[Live Demo Link](https://brilliant-naiad-38d9b0.netlify.app/)
 ### Credentials: 
       email: johndoe@gmail.com, password: password
 
