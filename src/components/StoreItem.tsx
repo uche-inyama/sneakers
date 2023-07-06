@@ -14,7 +14,7 @@ const StoreItem = ({ id, name, product_price, samples }: StoreItemProps) => {
   console.log(samples)
   return (
     <div className="storeItem">
-      <img src={samples[0]['image_url']} alt="product-item"/>
+      {samples[0] !=null && <img src={samples[0]['image_url']} alt="product-item"/>}
       <div className="purchase_details">
         <span className="product-name fs-4">{name}</span>
         <span className="product-price fs-4 text-muted">{formatCurrency(product_price)}</span>
