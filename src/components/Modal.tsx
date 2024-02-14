@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import ReactModal from 'react-modal'
+import { Link } from 'react-router-dom'
 import { useShoppingCart } from "../context/ShoppingCartContext"
 import { formatCurrency, discount_value } from '../utilities/formatCurrency'
 import trash from '../images/icon-delete.svg'
@@ -68,7 +69,9 @@ const Modal = () => {
               })
             }
           { items.length > 0 && 
-            <button className="pointer capitalize fw-700 checkout-button bg-Orange text-white">checkout</button>
+            <Link to={`/checkout`}>
+              <button className="pointer capitalize fw-700 checkout-button bg-Orange text-white">checkout</button>
+            </Link>
           }
         </div>
       </ReactModal>

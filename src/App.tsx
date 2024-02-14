@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Home from "./pages/Home"
 import Store from './pages/Store'
 import About from './pages/About'
+import Checkout from './pages/Checkout'
 import ShoppingItemDetail from './components/ShoppingItemDetail'
 import Navbar from './components/Navbar'
 import RegisterationForm from './pages/Registration'
@@ -25,6 +26,7 @@ function App() {
                   <Route path="/register" element={<RegisterationForm />} />
                   <Route path="/store" element={<Store />} />
                   <Route path="/about" element={<About />} />
+                  <Route path="/checkout" element={<Checkout />} />
                 </Routes>
               </div>
           </SessionsProvider>

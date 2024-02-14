@@ -35,14 +35,13 @@ export const RegistrationFormProvider = ({children}: RegistrationFormProviderPro
    try {
       const res = await axios({
         method: 'POST',
-        url: 'https://sneaker-api-new.onrender.com/users.json',
+        url: 'http://localhost:3000/users.json',
         data: userData
       })
-      console.log(res.data)
       dispatch({
         type: CREATE_USER,
         payload:{
-          data: res.data,
+          data: res.data, 
           notice: 'You have successfully created an account.'
         } 
       })
