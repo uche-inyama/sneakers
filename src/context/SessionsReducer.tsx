@@ -1,4 +1,4 @@
-import { CREATE_SESSION, END_SESSION, CLEAR_ALERT, CLEAR_NOTICE } from './types'
+import { CREATE_SESSION, END_SESSION, CLEAR_ALERT, CLEAR_NOTICE, CREATE_SESSION_FAILED } from './types'
 
 type action = {
   type: string
@@ -23,6 +23,13 @@ const SessionsReducer = (state :state, action :action) => {
         ...state,
         ...action.payload,
         isAuthenticated: true,
+        loading: false
+      }
+    case CREATE_SESSION_FAILED:
+      return {
+        ...state,
+        ...action.payload,
+        isAuthenticated: false,
         loading: false
       }
     case END_SESSION:

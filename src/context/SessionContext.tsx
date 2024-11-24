@@ -3,7 +3,7 @@ import { ReactNode, createContext, useContext, useReducer } from 'react';
 import { useNavigate } from 'react-router-dom'
 import setAuthToken from '../utilities/setAuthToken';
 import SessionsReducer from './SessionsReducer';
-import { CREATE_SESSION, END_SESSION, GET_PRODUCTS } from './types';
+import { CREATE_SESSION, END_SESSION, GET_PRODUCTS, CREATE_SESSION_FAILED } from './types';
 
 
 type SessionsproviderProps = {
@@ -77,6 +77,12 @@ export const SessionsProvider = ({children}: SessionsproviderProps) => {
       });
       navigate('/store', { replace: true, state: { msg: "You have signed in successfully", type: 'notice' } })
     } catch (error) {
+      dispatch({
+        type: CREATE_SESSION_FAILED,
+        payload: {
+          notice: 'Enter a correct username or password'
+        }
+      })
       console.error(error)
     }
   }

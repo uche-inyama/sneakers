@@ -35,11 +35,13 @@
 .price-detail {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  width: 100%;
 }
 
 .original-value {
   text-decoration: line-through;
   font-weight: 600;
+  width: 100%;
 }
 
 .total-wrapper {

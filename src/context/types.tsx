@@ -11,3 +11,4 @@ export const SET_ALERT = 'SET_ALERT';
 export const CLEAR_ALERT = 'CLEAR_ALERT';
 export const SET_NOTICE = 'SET_NOTICE';
 export const CLEAR_NOTICE = 'CLEAR_NOTICE';
+export const CREATE_SESSION_FAILED = 'CREATE_SESSION_FAILED';
