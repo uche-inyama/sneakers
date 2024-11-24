@@ -48,7 +48,7 @@ export const SessionsProvider = ({children}: SessionsproviderProps) => {
       setAuthToken(localStorage.token);
     }
     try {
-      const res = await axios.get('http://localhost:3000/products')
+      const res = await axios.get('https://sneaker-api-new.onrender.com/products')
       dispatch({
         type: GET_PRODUCTS,
         payload: res.data
@@ -63,7 +63,7 @@ export const SessionsProvider = ({children}: SessionsproviderProps) => {
    try {
       const res = await axios({
         method: 'POST',
-        url: 'http://localhost:3000/users/sign_in.json',
+        url: 'https://sneaker-api-new.onrender.com/users/sign_in.json',
         data: sessionData  
       })
       console.log(res)
@@ -92,7 +92,7 @@ export const SessionsProvider = ({children}: SessionsproviderProps) => {
     try {
         await axios({
         method: 'DELETE',
-        url: 'http://localhost:3000/users/sign_out.json'
+        url: 'https://sneaker-api-new.onrender.com/users/sign_out.json'
       })
       dispatch({
         type: END_SESSION,

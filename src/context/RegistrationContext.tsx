@@ -35,7 +35,7 @@ export const RegistrationFormProvider = ({children}: RegistrationFormProviderPro
    try {
       const res = await axios({
         method: 'POST',
-        url: 'http://localhost:3000/users.json',
+        url: 'https://sneaker-api-new.onrender.com/users.json',
         data: userData
       })
       dispatch({

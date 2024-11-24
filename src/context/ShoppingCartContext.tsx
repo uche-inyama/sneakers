@@ -65,6 +65,7 @@ export const ShoppingCartProvider = ({children}:
     }
   }
 
+
   const setLoading = () => dispatch({
     type: SET_LOADING,
     payload: undefined
