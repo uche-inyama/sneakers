@@ -2,9 +2,18 @@ import React, { useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { discount_value } from '../utilities/formatCurrency'
 
+type CartItem = {
+  id: number
+  quantity: number
+  amount: number
+  marketing_statement: string, 
+  product_price: number, 
+  product_discount: number, 
+  image: string
+}
 
 type FormProps = {
-  items: [],
+  items: CartItem[],
   currentUserId: {}
 }
 
@@ -17,8 +26,9 @@ const PaymentForm = ({items, currentUserId}:FormProps) => {
   console.log(items)
 
   const itemTotals = items.map(item => {
-    let value = discount_value(item.product_price, item.product_discount)
-    return value * item.quantity;
+    const { product_price, product_discount, quantity } = item;
+    let value = discount_value(product_price, product_discount)
+    return value *quantity;
   })
 
   const grandTotal = itemTotals.reduce((acc, total) => acc + total, 0);
@@ -90,7 +100,7 @@ const PaymentForm = ({items, currentUserId}:FormProps) => {
           }
         }} 
         />
-        <button type="submit" disabled={!stripe || isProcessing}>
+        <button type="submit">
           {isProcessing ? "Processing..." : "Pay"}
         </button>
         {message && <div>{message}</div>}

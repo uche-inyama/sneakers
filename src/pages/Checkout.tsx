@@ -12,7 +12,7 @@ console.log(publishableKey);
 
 const Payment: React.FC = () => {
   const {  items } = useShoppingCart();
-  const { currentUser} = useSessionsContext();
+  const { currentUser } = useSessionsContext();
 
   return (
     <Elements stripe={stripePromise}>
