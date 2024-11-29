@@ -30,7 +30,7 @@ const SessionsReducer = (state :state, action :action) => {
         ...state,
         ...action.payload,
         isAuthenticated: false,
-        loading: false
+        loading: true
       }
     case END_SESSION:
       localStorage.removeItem('token');

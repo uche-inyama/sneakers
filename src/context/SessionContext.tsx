@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { ReactNode, createContext, useContext, useReducer } from 'react';
+import { ReactNode, createContext, useState, useContext, useReducer } from 'react';
 import { useNavigate } from 'react-router-dom'
 import setAuthToken from '../utilities/setAuthToken';
 import SessionsReducer from './SessionsReducer';
@@ -15,11 +15,17 @@ type session = {
   password: string;  
 };
 
+type current_user = {
+  id: number,
+  username: string
+}
+
 type SessionsContext = {
   createSession: (sessionData: session) => void
   endSession: () => void,
-  isAuthenticated: any,
-  loading: boolean
+  isAuthenticated: boolean,
+  currentUser: current_user,
+  loading: boolean,
   token: string,
   session: any
 }
@@ -31,6 +37,7 @@ export const useSessionsContext = () => {
 }
 
 export const SessionsProvider = ({children}: SessionsproviderProps) => {
+  // const [currentUser, setCurrentUser] = useState({} as current_user)
   const navigate = useNavigate()
   const initialState = {
     alert: '',
@@ -66,11 +73,12 @@ export const SessionsProvider = ({children}: SessionsproviderProps) => {
         url: 'https://sneaker-api-new.onrender.com/users/sign_in.json',
         data: sessionData  
       })
-      console.log(res)
+      console.log(res.data)
+
       dispatch({
         type: CREATE_SESSION,
         payload: {
-          id: res.data.current_user.id,
+          currentUser: res.data.current_user,
           data: res.data,
           notice: 'You have successfully signed in.'
         }
@@ -109,6 +117,7 @@ export const SessionsProvider = ({children}: SessionsproviderProps) => {
        createSession,
        endSession,
        isAuthenticated: state.isAuthenticated,
+       currentUser: state.currentUser,
        token: state.token,
        loading: state.loading,
        session: state.session
