@@ -48,7 +48,7 @@ const PaymentForm = ({items, currentUserId}:FormProps) => {
     setIsProcessing(true);
 
     try {
-      const response = await fetch("https://sneaker-api-new.onrender.com/payments/create_payment_intent", {
+      const response = await fetch("http://localhost:3000/payments/create_payment_intent", {
         method: "POST",
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify({ amount: grandTotal, currency: 'usd', currentUserId: currentUserId }),

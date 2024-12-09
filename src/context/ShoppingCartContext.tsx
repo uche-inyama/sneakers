@@ -54,7 +54,7 @@ export const ShoppingCartProvider = ({children}:
 
   function removeFromCart(id: number) { 
     try {
-      axios.delete(`https://sneaker-api-new.onrender.com/cart/${id}/remove`)
+      axios.delete(`http://localhost:3000/cart/${id}/remove`)
       dispatch({
         type: REMOVE_FROM_CART,
         payload: id
@@ -76,7 +76,7 @@ export const ShoppingCartProvider = ({children}:
     try {
       const res =  await axios({
         method: 'POST',
-        url: `https://sneaker-api-new.onrender.com/cart/${args[0]}/add`,
+        url: `http://localhost:3000/cart/${args[0]}/add`,
         data: { 
           quantity: args[1],
           image: args[2],

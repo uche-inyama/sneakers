@@ -37,7 +37,7 @@ const ProductListState = ({children}: ProductListProviderProps) => {
 
   const getProducts = async () => {
     setLoading();
-    const res = await axios.get(`https://sneaker-api-new.onrender.com/products.json`)
+    const res = await axios.get(`http://localhost:3000/products.json`)
     console.log(res)
     dispatch({
       type: GET_PRODUCTS,
@@ -47,7 +47,7 @@ const ProductListState = ({children}: ProductListProviderProps) => {
 
   const getProduct = async (id: any) => {
     setLoading();
-    const res = await axios.get(`https://sneaker-api-new.onrender.com/products/${id}.json`)
+    const res = await axios.get(`http://localhost:3000/products/${id}.json`)
     console.log(res)
     dispatch({
       type: GET_PRODUCT,
