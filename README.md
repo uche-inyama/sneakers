@@ -2,7 +2,7 @@
 
 
 ## Backend Details
-[Live Demo Link](https://sneaker-api-new.onrender.com/)
+[Live Demo Link](https://new-sneaker-api.fly.dev/)
 ### Credentials: 
       email: johndoe@gmail.com, password: password
 
